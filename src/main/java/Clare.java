@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -6,25 +8,64 @@ public class Clare {
     static String divider = "----------------------------------------";
     static ArrayList<Task> tasks = new ArrayList<>();
 
+    private static void clareSays(String msg) {
+        System.out.println(divider);
+        System.out.println(msg);
+        System.out.println(divider);
+    }
+
     private static void welcome() {
         String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
-        System.out.println(divider);
-        System.out.println(welcomeText);
-        System.out.println(divider);
+        clareSays(welcomeText);
     }
 
     private static void farewell() {
         String farewellText = "Bye dear. I will miss you!";
-        System.out.println(divider);
-        System.out.println(farewellText);
-        System.out.println(divider);
+        clareSays(farewellText);
     }
 
-    private static void addList(String task) {
-        tasks.add(new Task(task));
-        System.out.println(divider);
-        System.out.println("added: " + task);
-        System.out.println(divider);
+    private static void createTodo(String msg) {
+        if (msg.length() < 5) {
+            clareSays("Please add a description.");
+            return;
+        }
+        msg = msg.substring(5); // remove prefix command
+
+        Task newTask = new Todo(msg);
+        tasks.add(newTask);
+        clareSays("added todo: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
+    }
+
+    private static void createDeadline(String msg) {
+        msg = msg.substring(8); // remove prefix command
+        String[] s = msg.split(" /");
+        if (s.length < 2) {
+            clareSays("Please add a deadline.");
+            return;
+        }
+        if (!s[1].startsWith("by ")) {
+            clareSays("Wrong format!!\nPlease input according to this format: deadline ... /by ...");
+            return;
+        }
+        Task newTask = new Deadline(s[0], s[1]);
+        tasks.add(newTask);
+        clareSays("added deadline: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
+    }
+
+    private static void createEvent(String msg) {
+        msg = msg.substring(5); // remove prefix command
+        String[] s = msg.split(" /");
+        if (s.length < 3) {
+            clareSays("Please add a deadline and start time.");
+            return;
+        }
+        if (!s[1].startsWith("from ") && !s[2].startsWith("to ")) {
+            clareSays("Wrong format!!\nPlease input according to this format: event ... /from ... /to ...");
+            return;
+        }
+        Task newTask = new Event(s[0], s[1].substring(5), s[2].substring(3));
+        tasks.add(newTask);
+        clareSays("added event: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
     }
 
     private static void showList() {
@@ -35,10 +76,16 @@ public class Clare {
         System.out.println(divider);
     }
 
-    private static void mark(int i) {
-        i = i-1;
+    private static void mark(String num) {
+        int i;
+        try {
+            i = Integer.parseInt(num) - 1;
+        } catch (NumberFormatException e) {
+            clareSays("This is not a number!!");
+            return;
+        }
         if (i < 0 || i >= tasks.size()) {
-            System.out.println("My dear. There is no such task.");
+            clareSays("My dear. There is no such task.");
         } else {
             Task t = tasks.get(i);
             t.markDone();
@@ -49,10 +96,16 @@ public class Clare {
         }
     }
 
-    private static void unmark(int i) {
-        i = i-1;
+    private static void unmark(String num) {
+        int i;
+        try {
+            i = Integer.parseInt(num) - 1;
+        } catch (NumberFormatException e) {
+            clareSays("This is not a number!!");
+            return;
+        }
         if (i < 0 || i >= tasks.size()) {
-            System.out.println("My dear. There is no such task.");
+            clareSays("My dear. There is no such task.");
         } else {
             Task t = tasks.get(i);
             t.markUndone();
@@ -77,21 +130,32 @@ public class Clare {
                     break;
                 case("mark"):
                     if (splits.length > 1) {
-                        mark(Integer.parseInt(splits[1]));
+                        mark(splits[1]);
                         break;
                     }
                 case("unmark"):
                     if (splits.length > 1) {
-                        unmark(Integer.parseInt(splits[1]));
+                        unmark(splits[1]);
                         break;
                     }
+                case("todo"):
+                    createTodo(msg);
+                    break;
+
+                case("deadline"):
+                    createDeadline(msg);
+                    break;
+
+                case("event"):
+                    createEvent(msg);
+                    break;
+
                 default:
-                    addList(msg);
+                    clareSays("I don't understand this command :(");
                     break;
             }
             msg = scanner.nextLine();
         }
         farewell();
-
     }
 }

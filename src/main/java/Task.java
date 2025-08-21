@@ -1,23 +1,25 @@
-public class Task {
+public abstract class Task {
     private boolean isDone;
-    private String title;
+    final String title;
 
     Task(String title) {
         this.title = title;
         this.isDone = false;
     }
 
-    void markDone() {
+    public String getIsDoneStatus() {
+        return isDone ? "[X]" : "[ ]";
+    }
+
+    public void markDone() {
         this.isDone = true;
     }
 
-    void markUndone() {
+    public void markUndone() {
         this.isDone = false;
     }
 
-    @Override
-    public String toString() {
-        String d = isDone ? "X" : " ";
-        return "[" + d + "]" + " " + title;
-    }
+    abstract String getTypeString();
+
+
 }
