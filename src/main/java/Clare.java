@@ -116,6 +116,23 @@ public class Clare {
         }
     }
 
+    private static void delete(String num) {
+        int i;
+        try {
+            i = Integer.parseInt(num) - 1;
+        } catch (NumberFormatException e) {
+            clareSays("This is not a number!!");
+            return;
+        }
+        if (i < 0 || i >= tasks.size()) {
+            clareSays("My dear. There is no such task.");
+        } else {
+            Task t = tasks.get(i);
+            tasks.remove(i);
+            clareSays("deleted event: " + t + "\nNow you have " + tasks.size() + " tasks.");
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -149,6 +166,12 @@ public class Clare {
                     case ("event"):
                         createEvent(msg);
                         break;
+
+                    case ("delete"):
+                        if (splits.length > 1) {
+                            delete(splits[1]);
+                            break;
+                        }
 
                     default:
                         clareSays("I don't understand this command :(");

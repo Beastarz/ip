@@ -25,4 +25,7 @@ unmark 3 1
 unmark k
 list
 blah
+delete 1
+delete k
+delete 1 2
 bye
