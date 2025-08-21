@@ -11,12 +11,12 @@ public class Deadline extends Todo{
         return "[D]";
     }
 
-    public String getDeadlineString() {
-        return "(by: " + deadline + ")";
+    public String getDeadline() {
+        return deadline;
     }
 
     @Override
     public String toString() {
-        return getTypeString() +  super.toString().substring(3) + " (" + deadline + ")";
+        return getTypeString() +  super.toString().substring(3) + " (by: " + deadline + ")";
     }
 }

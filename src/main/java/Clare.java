@@ -59,7 +59,7 @@ public class Clare {
             clareSays("Please add a deadline and start time.");
             return;
         }
-        if (!s[1].startsWith("from ") && !s[2].startsWith("to ")) {
+        if (!s[1].startsWith("from ") || !s[2].startsWith("to ")) {
             clareSays("Wrong format!!\nPlease input according to this format: event ... /from ... /to ...");
             return;
         }
@@ -123,36 +123,37 @@ public class Clare {
         String msg = scanner.nextLine();
         while (!Objects.equals(msg, "bye")) {
             String[] splits = msg.split(" ");
-
-            switch (splits[0]) {
-                case("list"):
-                    showList();
-                    break;
-                case("mark"):
-                    if (splits.length > 1) {
-                        mark(splits[1]);
+            if (splits.length > 0) {
+                switch (splits[0]) {
+                    case ("list"):
+                        showList();
                         break;
-                    }
-                case("unmark"):
-                    if (splits.length > 1) {
-                        unmark(splits[1]);
+                    case ("mark"):
+                        if (splits.length > 1) {
+                            mark(splits[1]);
+                            break;
+                        }
+                    case ("unmark"):
+                        if (splits.length > 1) {
+                            unmark(splits[1]);
+                            break;
+                        }
+                    case ("todo"):
+                        createTodo(msg);
                         break;
-                    }
-                case("todo"):
-                    createTodo(msg);
-                    break;
 
-                case("deadline"):
-                    createDeadline(msg);
-                    break;
+                    case ("deadline"):
+                        createDeadline(msg);
+                        break;
 
-                case("event"):
-                    createEvent(msg);
-                    break;
+                    case ("event"):
+                        createEvent(msg);
+                        break;
 
-                default:
-                    clareSays("I don't understand this command :(");
-                    break;
+                    default:
+                        clareSays("I don't understand this command :(");
+                        break;
+                }
             }
             msg = scanner.nextLine();
         }

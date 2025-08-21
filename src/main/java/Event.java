@@ -13,6 +13,6 @@ public class Event extends Deadline{
 
     @Override
     public String toString() {
-        return getTypeString() + super.getIsDoneStatus() + " " + super.title + " (from: " + startTime + ")" + getDeadlineString();
+        return getTypeString() + super.getIsDoneStatus() + " " + super.title + " (from: " + startTime + " to: " + getDeadline() + ")";
     }
 }
