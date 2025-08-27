@@ -18,38 +18,38 @@ added todo: [T][ ] t /by 12
 Now you have 2 tasks.
 ----------------------------------------
 ----------------------------------------
-added deadline: [D][ ]  t (by: by 12 Sep)
+added deadline: [D][ ] t (by: 12 Sep)
 Now you have 3 tasks.
 ----------------------------------------
 ----------------------------------------
-Please add a deadline.
+Please add a deadline according to this format: deadline ... /by ....
 ----------------------------------------
 ----------------------------------------
-Please add a deadline.
-----------------------------------------
-----------------------------------------
-Wrong format!!
-Please input according to this format: deadline ... /by ...
+Please add a deadline according to this format: deadline ... /by ....
 ----------------------------------------
 ----------------------------------------
 Wrong format!!
 Please input according to this format: deadline ... /by ...
 ----------------------------------------
 ----------------------------------------
-added event: [E][ ]  t (from: 12 Aug to: 18 Aug)
+Wrong format!!
+Please input according to this format: deadline ... /by ...
+----------------------------------------
+----------------------------------------
+added event: [E][ ] t (from: 12 Aug to: 18 Aug)
 Now you have 4 tasks.
 ----------------------------------------
 ----------------------------------------
-Please add a deadline and start time.
+Please add a deadline and start time according to this format: event ... /from ... /to ....
 ----------------------------------------
 ----------------------------------------
-Please add a deadline and start time.
+Please add a deadline and start time according to this format: event ... /from ... /to ....
 ----------------------------------------
 ----------------------------------------
-Please add a deadline and start time.
+Please add a deadline and start time according to this format: event ... /from ... /to ....
 ----------------------------------------
 ----------------------------------------
-Please add a deadline and start time.
+Please add a deadline and start time according to this format: event ... /from ... /to ....
 ----------------------------------------
 ----------------------------------------
 Wrong format!!
@@ -76,7 +76,7 @@ Please provide a number!
 ----------------------------------------
 ----------------------------------------
 I have marked this task done:
-   3. [D][X]  t (by: by 12 Sep)
+   3. [D][X] t (by: 12 Sep)
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
@@ -94,7 +94,7 @@ Please provide a number!
 ----------------------------------------
 ----------------------------------------
 I have unmarked this task done:
-   3. [D][ ]  t (by: by 12 Sep)
+   3. [D][ ] t (by: 12 Sep)
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
@@ -102,8 +102,8 @@ This is not a number!!
 ----------------------------------------
 1. [T][ ] t
 2. [T][X] t /by 12
-3. [D][ ]  t (by: by 12 Sep)
-4. [E][ ]  t (from: 12 Aug to: 18 Aug)
+3. [D][ ] t (by: 12 Sep)
+4. [E][ ] t (from: 12 Aug to: 18 Aug)
 ----------------------------------------
 ----------------------------------------
 I don't understand this command :(
