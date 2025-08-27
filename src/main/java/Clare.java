@@ -1,5 +1,15 @@
+import Task.Deadline;
+import Task.Event;
+import Task.Task;
+import Task.Todo;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import data.Data;
+import exception.StringConvertExceptions;
 
 enum Commands {
     list,
@@ -15,6 +25,7 @@ enum Commands {
 public class Clare {
     static String divider = "----------------------------------------";
     static ArrayList<Task> tasks = new ArrayList<>();
+    static String dataPath = "data/data.txt";
 
     private static void clareSays(String msg) {
         System.out.println(divider);
@@ -24,6 +35,13 @@ public class Clare {
 
     private static void welcome() {
         String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
+        try {
+            Data.readFile(tasks, dataPath);
+        } catch (FileNotFoundException e) {
+            clareSays("File not found. "+ e);
+        } catch (StringConvertExceptions e) {
+            clareSays("Failed to load file: " + e);
+        }
         clareSays(welcomeText);
     }
 
@@ -39,7 +57,13 @@ public class Clare {
         }
         msg = msg.substring(5); // remove prefix command
 
-        Task newTask = new Todo(msg);
+        Task newTask = new Todo(msg, false);
+        try {
+            Data.addData(newTask, dataPath);
+        } catch (IOException e) {
+            clareSays("Something went wrong." + e);
+            return;
+        }
         tasks.add(newTask);
         clareSays("added todo: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
     }
@@ -48,14 +72,20 @@ public class Clare {
         msg = msg.substring(8); // remove prefix command
         String[] s = msg.split(" /");
         if (s.length < 2) {
-            clareSays("Please add a deadline.");
+            clareSays("Please add a deadline according to this format: deadline ... /by ....");
             return;
         }
         if (!s[1].startsWith("by ")) {
             clareSays("Wrong format!!\nPlease input according to this format: deadline ... /by ...");
             return;
         }
-        Task newTask = new Deadline(s[0], s[1]);
+        Task newTask = new Deadline(s[0].substring(1), s[1].substring(3), false);
+        try {
+            Data.addData(newTask, dataPath);
+        } catch (IOException e) {
+            clareSays("Something went wrong." + e);
+            return;
+        }
         tasks.add(newTask);
         clareSays("added deadline: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
     }
@@ -64,14 +94,20 @@ public class Clare {
         msg = msg.substring(5); // remove prefix command
         String[] s = msg.split(" /");
         if (s.length < 3) {
-            clareSays("Please add a deadline and start time.");
+            clareSays("Please add a deadline and start time according to this format: event ... /from ... /to ....");
             return;
         }
         if (!s[1].startsWith("from ") || !s[2].startsWith("to ")) {
             clareSays("Wrong format!!\nPlease input according to this format: event ... /from ... /to ...");
             return;
         }
-        Task newTask = new Event(s[0], s[1].substring(5), s[2].substring(3));
+        Task newTask = new Event(s[0].substring(1), s[1].substring(5), s[2].substring(3), false);
+        try {
+            Data.addData(newTask, dataPath);
+        } catch (IOException e) {
+            clareSays("Something went wrong." + e);
+            return;
+        }
         tasks.add(newTask);
         clareSays("added event: " + newTask + "\nNow you have " + tasks.size() + " tasks.");
     }
@@ -97,6 +133,11 @@ public class Clare {
         } else {
             Task t = tasks.get(i);
             t.markDone();
+            try {
+                Data.rewriteData(tasks, dataPath);
+            } catch (IOException e) {
+                clareSays("Something went wrong. " + e);
+            }
             System.out.println(divider);
             System.out.println("I have marked this task done:");
             System.out.println("   " + (i + 1) + ". " + t);
@@ -117,6 +158,11 @@ public class Clare {
         } else {
             Task t = tasks.get(i);
             t.markUndone();
+            try {
+                Data.rewriteData(tasks, dataPath);
+            } catch (IOException e) {
+                clareSays("Something went wrong. " + e);
+            }
             System.out.println(divider);
             System.out.println("I have unmarked this task done:");
             System.out.println("   " + (i + 1) + ". " + t);
@@ -137,6 +183,11 @@ public class Clare {
         } else {
             Task t = tasks.get(i);
             tasks.remove(i);
+            try {
+                Data.rewriteData(tasks, dataPath);
+            } catch (IOException e) {
+                clareSays("Something went wrong. " + e);
+            }
             clareSays("deleted event: " + t + "\nNow you have " + tasks.size() + " tasks.");
         }
     }
