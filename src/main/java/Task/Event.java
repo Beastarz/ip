@@ -1,11 +1,33 @@
 package Task;
 
-public class Event extends Deadline{
-    String startTime;
+import exception.StringConvertExceptions;
 
-    public Event(String title, String startTime, String deadline, boolean isDone) {
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Objects;
+
+public class Event extends Deadline{
+    LocalDate startDate;
+    LocalTime startTime;
+
+    public Event(String title, String startTime, String deadline, boolean isDone) throws StringConvertExceptions {
         super(title, deadline, isDone);
-        this.startTime = startTime;
+        try {
+            String[] d = startTime.split(" ");
+            if (Objects.equals(d[0], "now")) {
+                startDate = LocalDate.now();
+                this.startTime = LocalTime.now();
+                return;
+            }
+            startDate = LocalDate.parse(d[0]);
+            if (d.length > 1) {
+                this.startTime = LocalTime.parse(d[1]);
+            }
+        } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
+            throw new StringConvertExceptions("Error start date format: " + deadline + " Please follow this format YYYY-MM-DD HH:MM");
+        }
     }
 
     @Override
@@ -18,9 +40,13 @@ public class Event extends Deadline{
         return TaskType.E;
     }
 
+    public String getStartTime() {
+        return startDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))+ (startTime == null ? "" : (" " + startTime));
+    }
+
     @Override
     public String toString() {
-        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle() + " (from: " + startTime + " to: " + getDeadline() + ")";
+        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle() + " (from: " + getStartTime() + " to: " + getDeadline() + ")";
     }
 
     @Override

@@ -79,7 +79,15 @@ public class Clare {
             clareSays("Wrong format!!\nPlease input according to this format: deadline ... /by ...");
             return;
         }
-        Task newTask = new Deadline(s[0].substring(1), s[1].substring(3), false);
+        Task newTask;
+
+        try {
+            newTask = new Deadline(s[0].substring(1), s[1].substring(3), false);
+        } catch (StringConvertExceptions e) {
+            clareSays(e.toString());
+            return;
+        }
+
         try {
             Data.addData(newTask, dataPath);
         } catch (IOException e) {
@@ -101,7 +109,15 @@ public class Clare {
             clareSays("Wrong format!!\nPlease input according to this format: event ... /from ... /to ...");
             return;
         }
-        Task newTask = new Event(s[0].substring(1), s[1].substring(5), s[2].substring(3), false);
+
+        Task newTask;
+        try {
+            newTask = new Event(s[0].substring(1), s[1].substring(5), s[2].substring(3), false);
+        } catch (StringConvertExceptions e) {
+            clareSays(e.toString());
+            return;
+        }
+
         try {
             Data.addData(newTask, dataPath);
         } catch (IOException e) {
