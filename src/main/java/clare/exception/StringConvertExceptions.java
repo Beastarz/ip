@@ -1,4 +1,4 @@
-package exception;
+package clare.exception;
 
 public class StringConvertExceptions extends Exception{
     private final String str;
@@ -9,6 +9,6 @@ public class StringConvertExceptions extends Exception{
 
     @Override
     public String toString() {
-        return "String conversion exception: error processing string " + str;
+        return "String conversion duke.exception: error processing string " + str;
     }
 }
