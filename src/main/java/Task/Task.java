@@ -5,7 +5,6 @@ import exception.StringConvertExceptions;
 import java.util.Objects;
 
 public abstract class Task {
-    static String hi = "KK";
     private boolean isDone;
     private final String title;
 
