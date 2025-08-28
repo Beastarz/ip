@@ -40,7 +40,7 @@ public class Event extends Deadline{
         return TaskType.E;
     }
 
-    public String getStartTime() {
+    private String getStartTime() {
         return startDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))+ (startTime == null ? "" : (" " + startTime));
     }
 

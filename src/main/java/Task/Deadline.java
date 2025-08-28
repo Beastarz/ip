@@ -40,11 +40,20 @@ public class Deadline extends Todo{
         return TaskType.D;
     }
 
-    public LocalDate getDeadlineDate() {
-        return deadlineDate;
+    /**
+     * check if the date give is same as the task deadline
+     * @param date the given date to compare
+     * @return true if equals, false otherwise
+     */
+    public boolean checkDeadline(LocalDate date) {
+        return deadlineDate.equals(date);
     }
 
-    public String getDeadlineString() {
+    /**
+     * get the string of deadline
+     * @return the string of deadline
+     */
+    protected String getDeadlineString() {
         return deadlineDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + (deadlineTime == null ? "" : (" " + deadlineTime));
     }
 

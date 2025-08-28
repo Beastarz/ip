@@ -22,6 +22,6 @@ public class Todo extends Task{
 
     @Override
     public String toSaveString() {
-        return  getTypeString() + "|" + getIsDone() + "|" + getTitle();
+        return  getTypeString() + "|" + getIsDoneInt() + "|" + getTitle();
     }
 }

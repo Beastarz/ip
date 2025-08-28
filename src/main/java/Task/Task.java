@@ -13,6 +13,12 @@ public abstract class Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Method to convert data strings to Task object
+     * @param data data string
+     * @return Task object from data string
+     * @throws StringConvertExceptions exceptions when the format of data string is wrong
+     */
     public static Task convert(String data) throws StringConvertExceptions {
         String[] l = data.split("\\|");
         TaskType t;
@@ -55,28 +61,60 @@ public abstract class Task {
         return task;
     }
 
-    public String getTitle() {
+    /**
+     * gets the title string
+     * @return the string of title
+     */
+    protected String getTitle() {
         return title;
     }
 
-    public String getIsDoneStatus() {
+    /**
+     * get string representation of status
+     * @return string of status
+     */
+    protected String getIsDoneStatus() {
         return isDone ? "[X]" : "[ ]";
     }
 
-    public String getIsDone() {
+    /**
+     * get string representation of status to save
+     * @return string of status
+     */
+    protected String getIsDoneInt() {
         return  isDone ? "1" : "0";
     }
 
+    /**
+     * mark isDone status as true
+     */
     public void markDone() {
         this.isDone = true;
     }
 
+    /**
+     * mark isDone status as false
+     */
     public void markUndone() {
         this.isDone = false;
     }
 
-    public abstract TaskType getType();
+    /**
+     * get the type of task
+     * @return TaskType
+     */
+    protected abstract TaskType getType();
+
+    /**
+     * get the string of type of thr task
+     * @return string of type
+     */
     abstract String getTypeString();
+
+    /**
+     * get the string of task to save
+     * @return string to save
+     */
     public abstract String toSaveString();
 
 
