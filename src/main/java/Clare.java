@@ -14,7 +14,7 @@ public class Clare {
     public static void run() {
         UI ui = new UI();
         ui.welcome();
-        Storage storage = new Storage("data/duke.data.txt");
+        Storage storage = new Storage("data/data.txt");
         TaskList taskList;
         try {
             taskList = new TaskList(storage.loadData());
@@ -22,7 +22,7 @@ public class Clare {
             ui.showMessage("File not Found: " + e);
             taskList = new TaskList();
         } catch (StringConvertExceptions e) {
-            ui.showMessage("Error duke.data format " + e);
+            ui.showMessage("Error data format " + e);
             taskList = new TaskList();
         }
         ClareCommand command = new ClareCommand(ui, storage, taskList);
