@@ -5,6 +5,8 @@ import Task.Todo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,14 +14,15 @@ import data.Data;
 import exception.StringConvertExceptions;
 
 enum Commands {
-    list,
-    bye,
-    mark,
-    unmark,
-    delete,
-    todo,
-    deadline,
-    event,
+    LIST,
+    BYE,
+    MARK,
+    UNMARK,
+    DELETE,
+    TODO,
+    DEADLINE,
+    EVENT,
+    FIND,
 }
 
 public class Clare {
@@ -208,6 +211,26 @@ public class Clare {
         }
     }
 
+    private static void find(String msg) {
+        String[] s = msg.split(" ");
+        LocalDate date;
+        try {
+            date = LocalDate.parse(s[1]);
+        } catch (StringIndexOutOfBoundsException | DateTimeParseException e) {
+            clareSays("Invalid format: please follow this format, YYYY-MM-DD");
+            return;
+        }
+        System.out.println(divider);
+        for (Task t : tasks) {
+            if (t instanceof Deadline) {
+                if (((Deadline) t).getDeadlineDate().equals(date)) {
+                    System.out.println(t);
+                }
+            }
+        }
+        System.out.println(divider);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -217,46 +240,49 @@ public class Clare {
             String[] splits = msg.split(" ");
             if (splits.length > 0) {
                 try {
-                    Commands command = Commands.valueOf(splits[0]);
+                    Commands command = Commands.valueOf(splits[0].toUpperCase());
                     switch (command) {
-                        case bye:
+                        case BYE:
                             farewell();
                             return;
-                        case list:
+                        case LIST:
                             showList();
                             break;
-                        case mark:
+                        case MARK:
                             if (splits.length > 1) {
                                 mark(splits[1]);
                             } else {
                                 clareSays("Please provide a number!");
                             }
                             break;
-                        case unmark:
+                        case UNMARK:
                             if (splits.length > 1) {
                                 unmark(splits[1]);
                             } else {
                                 clareSays("Please provide a number!");
                             }
                             break;
-                        case todo:
+                        case TODO:
                             createTodo(msg);
                             break;
 
-                        case deadline:
+                        case DEADLINE:
                             createDeadline(msg);
                             break;
 
-                        case event:
+                        case EVENT:
                             createEvent(msg);
                             break;
 
-                        case delete:
+                        case DELETE:
                             if (splits.length > 1) {
                                 delete(splits[1]);
                             } else {
                                 clareSays("Please provide a number!");
                             }
+                            break;
+                        case FIND:
+                            find(msg);
                             break;
                         default:
                             clareSays("I don't understand this command :(");

@@ -40,17 +40,21 @@ public class Deadline extends Todo{
         return TaskType.D;
     }
 
-    public String getDeadline() {
+    public LocalDate getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public String getDeadlineString() {
         return deadlineDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + (deadlineTime == null ? "" : (" " + deadlineTime));
     }
 
     @Override
     public String toString() {
-        return "[" + getTypeString() + "]" +  super.toString().substring(3) + " (by: " + getDeadline() + ")";
+        return "[" + getTypeString() + "]" +  super.toString().substring(3) + " (by: " + getDeadlineString() + ")";
     }
 
     @Override
     public String toSaveString() {
-        return getTypeString() + super.toSaveString().substring(1) + "|" + getDeadline();
+        return getTypeString() + super.toSaveString().substring(1) + "|" + deadlineDate + " " + deadlineTime;
     }
 }

@@ -46,7 +46,7 @@ public class Event extends Deadline{
 
     @Override
     public String toString() {
-        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle() + " (from: " + getStartTime() + " to: " + getDeadline() + ")";
+        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle() + " (from: " + getStartTime() + " to: " + getDeadlineString() + ")";
     }
 
     @Override
