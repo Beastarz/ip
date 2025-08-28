@@ -1,0 +1,28 @@
+package ui;
+
+public class UI {
+    private final static String DIVIDER = "----------------------------------------";
+
+    private static void clareSays(String msg) {
+        System.out.println(DIVIDER);
+        System.out.println(msg);
+        System.out.println(DIVIDER);
+    }
+
+    public void welcome() {
+        String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
+        clareSays(welcomeText);
+    }
+
+    /**
+     * print put the farewell message
+     */
+    public void farewell() {
+        String farewellText = "Bye dear. I will miss you!";
+        clareSays(farewellText);
+    }
+
+    public void showMessage(String msg) {
+        clareSays(msg);
+    }
+}

@@ -4,6 +4,9 @@ So happy to see you today.
 What can I help?
 ----------------------------------------
 ----------------------------------------
+Error data format String conversion exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
+----------------------------------------
+----------------------------------------
 added todo: [T][ ] t
 Now you have 1 tasks.
 ----------------------------------------
@@ -18,8 +21,7 @@ added todo: [T][ ] t /by 12
 Now you have 2 tasks.
 ----------------------------------------
 ----------------------------------------
-added deadline: [D][ ] t (by: 12 Sep)
-Now you have 3 tasks.
+String conversion exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
 ----------------------------------------
 ----------------------------------------
 Please add a deadline according to this format: deadline ... /by ....
@@ -36,8 +38,7 @@ Wrong format!!
 Please input according to this format: deadline ... /by ...
 ----------------------------------------
 ----------------------------------------
-added event: [E][ ] t (from: 12 Aug to: 18 Aug)
-Now you have 4 tasks.
+String conversion exception: error processing string Error deadline format: 18 Aug Please follow this format YYYY-MM-DD HH:MM
 ----------------------------------------
 ----------------------------------------
 Please add a deadline and start time according to this format: event ... /from ... /to ....
@@ -69,48 +70,44 @@ Please input according to this format: event ... /from ... /to ...
 ----------------------------------------
 ----------------------------------------
 I have marked this task done:
-   1. [T][X] t
+  1. [T][X] t
 ----------------------------------------
 ----------------------------------------
 Please provide a number!
 ----------------------------------------
 ----------------------------------------
-I have marked this task done:
-   3. [D][X] t (by: 12 Sep)
+Invalid format: String conversion exception: error processing string There is no such task
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
 ----------------------------------------
 ----------------------------------------
 I have marked this task done:
-   2. [T][X] t /by 12
+  2. [T][X] t /by 12
 ----------------------------------------
 ----------------------------------------
-I have unmarked this task done:
-   1. [T][ ] t
+I have marked this task undone:
+  1. [T][X] t
 ----------------------------------------
 ----------------------------------------
 Please provide a number!
 ----------------------------------------
 ----------------------------------------
-I have unmarked this task done:
-   3. [D][ ] t (by: 12 Sep)
+Invalid format: String conversion exception: error processing string There is no such task
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
 ----------------------------------------
 ----------------------------------------
-1. [T][ ] t
-2. [T][X] t /by 12
-3. [D][ ] t (by: 12 Sep)
-4. [E][ ] t (from: 12 Aug to: 18 Aug)
+[T][X] t
+[T][X] t /by 12
 ----------------------------------------
 ----------------------------------------
 I don't understand this command :(
 ----------------------------------------
 ----------------------------------------
-deleted event: [T][ ] t
-Now you have 3 tasks.
+deleted event: [T][X] t
+Now you have 1 tasks.
 ----------------------------------------
 ----------------------------------------
 Please provide a number!
@@ -120,7 +117,7 @@ This is not a number!!
 ----------------------------------------
 ----------------------------------------
 deleted event: [T][X] t /by 12
-Now you have 2 tasks.
+Now you have 0 tasks.
 ----------------------------------------
 ----------------------------------------
 Bye dear. I will miss you!

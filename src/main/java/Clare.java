@@ -1,20 +1,38 @@
+import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import commands.ClareCommands;
+import Task.TaskList;
+import commands.ClareCommand;
+import data.Storage;
+import exception.StringConvertExceptions;
+import ui.UI;
 
 public class Clare {
     final static Scanner scanner = new Scanner(System.in);
 
     public static void run() {
-        ClareCommands.welcome();
+        UI ui = new UI();
+        ui.welcome();
+        Storage storage = new Storage("data/data.txt");
+        TaskList taskList;
+        try {
+            taskList = new TaskList(storage.loadData());
+        } catch (FileNotFoundException e) {
+            ui.showMessage("File not Found: " + e);
+            taskList = new TaskList();
+        } catch (StringConvertExceptions e) {
+            ui.showMessage("Error data format " + e);
+            taskList = new TaskList();
+        }
+        ClareCommand command = new ClareCommand(ui, storage, taskList);
         while (true) {
             String msg = scanner.nextLine();
             if (Objects.equals(msg, "bye")) {
-                ClareCommands.farewell();
+                ui.farewell();
                 break;
             }
-            ClareCommands.processCommand(msg);
+            command.processCommand(msg);
         }
 
     }

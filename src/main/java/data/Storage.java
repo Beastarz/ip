@@ -8,48 +8,49 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Task.Task;
+import Task.TaskList;
 import exception.StringConvertExceptions;
 
-public class Data {
+public class Storage {
+    final private String dataPath;
+
+    public Storage(String path) {
+        this.dataPath = path;
+    }
+
     /**
      * Read data from data path and load task into tasks array
      * @param tasks the array of task to be filled
-     * @param dataPath the source of data
      * @throws FileNotFoundException exception when the file is not found
      * @throws StringConvertExceptions exception if there is string conversion error on the command
      */
-    public static void readFile(ArrayList<Task> tasks, String dataPath) throws FileNotFoundException, StringConvertExceptions {
+    public ArrayList<Task> loadData() throws FileNotFoundException, StringConvertExceptions {
         File f = new File(dataPath);
         Scanner sc = new Scanner(f);
+        ArrayList<Task> tasks = new ArrayList<>();
         while (sc.hasNext()) {
             tasks.add(Task.convert(sc.nextLine()));
         }
+        return tasks;
     }
 
     /**
      * Overwrites the file from data path from tasks array
      * @param tasks the array of tasks
-     * @param dataPath the source of data file
      * @throws IOException exception when the file has problem
      */
-    public static void rewriteData(ArrayList<Task> tasks, String dataPath) throws IOException {
+    public void rewriteData(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(dataPath);
-        StringBuilder data = new StringBuilder();
-        for (Task t : tasks) {
-            data.append(t.toSaveString());
-            data.append(System.lineSeparator());
-        }
-        fw.write(data.toString());
+        fw.write(tasks.getAllTaskSaveString());
         fw.close();
     }
 
     /**
      * Add new line of data to the file
      * @param newTask the new data to be added
-     * @param dataPath the source of data file
      * @throws IOException exception when the file has problem
      */
-    public static void addData(Task newTask, String dataPath) throws IOException{
+    public void addData(Task newTask) throws IOException{
         FileWriter fw = new FileWriter(dataPath, true);
         fw.write(newTask.toSaveString() + System.lineSeparator());
         fw.close();
