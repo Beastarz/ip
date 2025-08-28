@@ -34,7 +34,6 @@ public class Clare {
             }
             command.processCommand(msg);
         }
-
     }
 
     public static void main(String[] args) {
