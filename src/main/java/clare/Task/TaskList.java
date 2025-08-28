@@ -1,4 +1,4 @@
-package clare.Task;
+package clare.task;
 
 import clare.exception.StringConvertExceptions;
 
@@ -80,18 +80,13 @@ public class TaskList {
 
     public String findTask(LocalDate date) {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < tasks.size(); i++) {
-            for (Task t : tasks) {
-                if (t instanceof Deadline) {
-                    if (((Deadline) t).checkDeadline(date)) {
-                        s.append(t);
-                    }
+        for (Task t : tasks) {
+            if (t instanceof Deadline) {
+                if (((Deadline) t).checkDeadline(date)) {
+                    s.append(t);
+                    s.append("\n");
                 }
             }
-            if (i == tasks.size()-1) {
-                break;
-            }
-            s.append("\n");
         }
         return s.toString();
     }

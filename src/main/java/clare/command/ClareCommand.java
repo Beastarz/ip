@@ -1,10 +1,10 @@
 package clare.command;
 
-import clare.Task.Task;
-import clare.Task.Deadline;
-import clare.Task.Event;
-import clare.Task.Todo;
-import clare.Task.TaskList;
+import clare.task.Task;
+import clare.task.Deadline;
+import clare.task.Event;
+import clare.task.Todo;
+import clare.task.TaskList;
 import clare.storage.Storage;
 import clare.exception.StringConvertExceptions;
 import clare.ui.UI;
@@ -25,8 +25,9 @@ public class ClareCommand {
     }
 
     /**
-     * process duke.command from input
-     * @param msg the duke.command string
+     * process command from input
+     * @param msg the
+     *            ommand string
      */
     public void processCommand(String msg) {
         String[] splits = msg.split(" ");

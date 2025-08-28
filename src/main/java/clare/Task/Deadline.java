@@ -1,4 +1,4 @@
-package clare.Task;
+package clare.task;
 
 import clare.exception.StringConvertExceptions;
 
@@ -64,6 +64,6 @@ public class Deadline extends Todo{
 
     @Override
     public String toSaveString() {
-        return getTypeString() + super.toSaveString().substring(1) + "|" + deadlineDate + " " + deadlineTime;
+        return getTypeString() + super.toSaveString().substring(1) + "|" + deadlineDate + (deadlineTime == null ? "" : (" " +deadlineTime));
     }
 }

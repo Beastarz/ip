@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import clare.Task.TaskList;
+import clare.task.TaskList;
 import clare.command.ClareCommand;
 import clare.storage.Storage;
 import clare.exception.StringConvertExceptions;

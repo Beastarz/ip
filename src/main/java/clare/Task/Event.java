@@ -1,4 +1,4 @@
-package clare.Task;
+package clare.task;
 
 import clare.exception.StringConvertExceptions;
 
@@ -51,6 +51,6 @@ public class Event extends Deadline{
 
     @Override
     public String toSaveString() {
-        return getTypeString() +  super.toSaveString().substring(1) + "|" + startTime;
+        return getTypeString() +  super.toSaveString().substring(1) + "|" + startDate + (startTime == null ? "" : (" " +startTime));
     }
 }

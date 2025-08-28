@@ -1,4 +1,4 @@
-package clare.Task;
+package clare.task;
 
 import clare.exception.StringConvertExceptions;
 
@@ -14,10 +14,10 @@ public abstract class Task {
     }
 
     /**
-     * Method to convert duke.data strings to duke.Task object
+     * Method to convert data strings to duke.Task object
      * @param data duke.data string
-     * @return duke.Task object from duke.data string
-     * @throws StringConvertExceptions exceptions when the format of duke.data string is wrong
+     * @return duke.Task object from data string
+     * @throws StringConvertExceptions exceptions when the format of data string is wrong
      */
     public static Task convert(String data) throws StringConvertExceptions {
         String[] l = data.split("\\|");
@@ -40,19 +40,19 @@ public abstract class Task {
         switch (t) {
             case T -> {
                 if (l.length < 3) {
-                    throw new StringConvertExceptions("Missing information on duke.data" + data);
+                    throw new StringConvertExceptions("Missing information on data" + data);
                 }
                 task = new Todo(l[2], isDone);
             }
             case D -> {
                 if (l.length < 4) {
-                    throw new StringConvertExceptions("Missing information on duke.data" + data);
+                    throw new StringConvertExceptions("Missing information on data" + data);
                 }
                 task = new Deadline(l[2], l[3], isDone);
             }
             case E -> {
                 if (l.length < 5) {
-                    throw new StringConvertExceptions("Missing information on duke.data" + data);
+                    throw new StringConvertExceptions("Missing information on data" + data);
                 }
                 task = new Event(l[2], l[3], l[4], isDone);
             }

@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import clare.Task.Task;
-import clare.Task.TaskList;
+import clare.task.Task;
+import clare.task.TaskList;
 import clare.exception.StringConvertExceptions;
 
 public class Storage {
