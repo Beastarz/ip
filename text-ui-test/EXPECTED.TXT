@@ -4,7 +4,7 @@ So happy to see you today.
 What can I help?
 ----------------------------------------
 ----------------------------------------
-Error data format String conversion exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
+Error clare.storage format String conversion clare.exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
 ----------------------------------------
 ----------------------------------------
 added todo: [T][ ] t
@@ -21,7 +21,7 @@ added todo: [T][ ] t /by 12
 Now you have 2 tasks.
 ----------------------------------------
 ----------------------------------------
-String conversion exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
+String conversion clare.exception: error processing string Error deadline format: 12 Sep Please follow this format YYYY-MM-DD HH:MM
 ----------------------------------------
 ----------------------------------------
 Please add a deadline according to this format: deadline ... /by ....
@@ -38,7 +38,7 @@ Wrong format!!
 Please input according to this format: deadline ... /by ...
 ----------------------------------------
 ----------------------------------------
-String conversion exception: error processing string Error deadline format: 18 Aug Please follow this format YYYY-MM-DD HH:MM
+String conversion clare.exception: error processing string Error deadline format: 18 Aug Please follow this format YYYY-MM-DD HH:MM
 ----------------------------------------
 ----------------------------------------
 Please add a deadline and start time according to this format: event ... /from ... /to ....
@@ -76,7 +76,7 @@ I have marked this task done:
 Please provide a number!
 ----------------------------------------
 ----------------------------------------
-Invalid format: String conversion exception: error processing string There is no such task
+Invalid format: String conversion clare.exception: error processing string There is no such task
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
@@ -93,7 +93,7 @@ I have marked this task undone:
 Please provide a number!
 ----------------------------------------
 ----------------------------------------
-Invalid format: String conversion exception: error processing string There is no such task
+Invalid format: String conversion clare.exception: error processing string There is no such task
 ----------------------------------------
 ----------------------------------------
 This is not a number!!
@@ -103,7 +103,7 @@ This is not a number!!
 [T][X] t /by 12
 ----------------------------------------
 ----------------------------------------
-I don't understand this command :(
+I don't understand this clare.command :(
 ----------------------------------------
 ----------------------------------------
 deleted event: [T][X] t

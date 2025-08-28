@@ -2,11 +2,11 @@ import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import Task.TaskList;
-import commands.ClareCommand;
-import data.Storage;
-import exception.StringConvertExceptions;
-import ui.UI;
+import clare.Task.TaskList;
+import clare.command.ClareCommand;
+import clare.storage.Storage;
+import clare.exception.StringConvertExceptions;
+import clare.ui.UI;
 
 public class Clare {
     final static Scanner scanner = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class Clare {
     public static void run() {
         UI ui = new UI();
         ui.welcome();
-        Storage storage = new Storage("data/data.txt");
+        Storage storage = new Storage("data/duke.data.txt");
         TaskList taskList;
         try {
             taskList = new TaskList(storage.loadData());
@@ -22,7 +22,7 @@ public class Clare {
             ui.showMessage("File not Found: " + e);
             taskList = new TaskList();
         } catch (StringConvertExceptions e) {
-            ui.showMessage("Error data format " + e);
+            ui.showMessage("Error duke.data format " + e);
             taskList = new TaskList();
         }
         ClareCommand command = new ClareCommand(ui, storage, taskList);
