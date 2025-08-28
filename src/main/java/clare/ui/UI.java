@@ -1,4 +1,4 @@
-package ui;
+package clare.ui;
 
 public class UI {
     private final static String DIVIDER = "----------------------------------------";

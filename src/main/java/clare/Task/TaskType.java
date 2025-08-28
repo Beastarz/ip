@@ -1,4 +1,4 @@
-package Task;
+package clare.Task;
 
 public enum TaskType {
     T,

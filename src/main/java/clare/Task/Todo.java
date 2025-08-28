@@ -1,4 +1,4 @@
-package Task;
+package clare.Task;
 
 public class Todo extends Task{
     public Todo(String title, boolean isDone) {

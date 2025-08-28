@@ -1,4 +1,4 @@
-package commands;
+package clare.command;
 
 public enum Commands {
     LIST,

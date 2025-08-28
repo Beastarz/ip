@@ -1,13 +1,13 @@
-package commands;
+package clare.command;
 
-import Task.Task;
-import Task.Deadline;
-import Task.Event;
-import Task.Todo;
-import Task.TaskList;
-import data.Storage;
-import exception.StringConvertExceptions;
-import ui.UI;
+import clare.Task.Task;
+import clare.Task.Deadline;
+import clare.Task.Event;
+import clare.Task.Todo;
+import clare.Task.TaskList;
+import clare.storage.Storage;
+import clare.exception.StringConvertExceptions;
+import clare.ui.UI;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -25,8 +25,8 @@ public class ClareCommand {
     }
 
     /**
-     * process command from input
-     * @param msg the command string
+     * process duke.command from input
+     * @param msg the duke.command string
      */
     public void processCommand(String msg) {
         String[] splits = msg.split(" ");
@@ -76,11 +76,11 @@ public class ClareCommand {
                     find(msg);
                     break;
                 default:
-                    ui.showMessage("I don't understand this command :(");
+                    ui.showMessage("I don't understand this duke.command :(");
                     break;
             }
             } catch (IllegalArgumentException e) {
-                ui.showMessage("I don't understand this command :(");
+                ui.showMessage("I don't understand this duke.command :(");
             }
 
     }
@@ -90,7 +90,7 @@ public class ClareCommand {
             ui.showMessage("Please add a description.");
             return;
         }
-        msg = msg.substring(5); // remove prefix command
+        msg = msg.substring(5); // remove prefix duke.command
 
         Task newTask = new Todo(msg, false);
         try {
@@ -104,7 +104,7 @@ public class ClareCommand {
     }
 
     private void createDeadline(String msg) {
-        msg = msg.substring(8); // remove prefix command
+        msg = msg.substring(8); // remove prefix duke.command
         String[] s = msg.split(" /");
         if (s.length < 2) {
             ui.showMessage("Please add a deadline according to this format: deadline ... /by ....");
@@ -134,7 +134,7 @@ public class ClareCommand {
     }
 
     private void createEvent(String msg) {
-        msg = msg.substring(5); // remove prefix command
+        msg = msg.substring(5); // remove prefix duke.command
         String[] s = msg.split(" /");
         if (s.length < 3) {
             ui.showMessage("Please add a deadline and start time according to this format: event ... /from ... /to ....");

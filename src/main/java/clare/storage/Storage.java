@@ -1,4 +1,4 @@
-package data;
+package clare.storage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Task.Task;
-import Task.TaskList;
-import exception.StringConvertExceptions;
+import clare.Task.Task;
+import clare.Task.TaskList;
+import clare.exception.StringConvertExceptions;
 
 public class Storage {
     final private String dataPath;
@@ -19,9 +19,9 @@ public class Storage {
     }
 
     /**
-     * Read data from data path and load task into tasks array
-     * @throws FileNotFoundException exception when the file is not found
-     * @throws StringConvertExceptions exception if there is string conversion error on the command
+     * Read duke.data from duke.data path and load task into tasks array
+     * @throws FileNotFoundException duke.exception when the file is not found
+     * @throws StringConvertExceptions duke.exception if there is string conversion error on the duke.command
      */
     public ArrayList<Task> loadData() throws FileNotFoundException, StringConvertExceptions {
         File f = new File(dataPath);
@@ -34,9 +34,9 @@ public class Storage {
     }
 
     /**
-     * Overwrites the file from data path from tasks array
+     * Overwrites the file from duke.data path from tasks array
      * @param tasks the array of tasks
-     * @throws IOException exception when the file has problem
+     * @throws IOException duke.exception when the file has problem
      */
     public void rewriteData(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(dataPath);
@@ -45,9 +45,9 @@ public class Storage {
     }
 
     /**
-     * Add new line of data to the file
-     * @param newTask the new data to be added
-     * @throws IOException exception when the file has problem
+     * Add new line of duke.data to the file
+     * @param newTask the new duke.data to be added
+     * @throws IOException duke.exception when the file has problem
      */
     public void addData(Task newTask) throws IOException{
         FileWriter fw = new FileWriter(dataPath, true);
