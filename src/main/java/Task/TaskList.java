@@ -46,7 +46,7 @@ public class TaskList {
         Task t;
         try {
             t = tasks.get(i);
-            t.markDone();
+            t.markUndone();
             return t;
         } catch (IndexOutOfBoundsException e) {
             throw new StringConvertExceptions("There is no such task");

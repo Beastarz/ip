@@ -14,7 +14,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class ClareCommand {
-    private final static String DIVIDER = "----------------------------------------";
     private final UI ui;
     private final Storage storage;
     private final TaskList taskList;

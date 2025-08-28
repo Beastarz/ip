@@ -20,7 +20,6 @@ public class Storage {
 
     /**
      * Read data from data path and load task into tasks array
-     * @param tasks the array of task to be filled
      * @throws FileNotFoundException exception when the file is not found
      * @throws StringConvertExceptions exception if there is string conversion error on the command
      */
