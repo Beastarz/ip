@@ -3,7 +3,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import clare.task.TaskList;
-import clare.command.ClareCommand;
+import clare.command.Parser;
 import clare.storage.Storage;
 import clare.exception.StringConvertExceptions;
 import clare.ui.UI;
@@ -25,14 +25,14 @@ public class Clare {
             ui.showMessage("Error data format " + e);
             taskList = new TaskList();
         }
-        ClareCommand command = new ClareCommand(ui, storage, taskList);
+        Parser parser = new Parser(ui, storage, taskList);
         while (true) {
             String msg = scanner.nextLine();
             if (Objects.equals(msg, "bye")) {
                 ui.farewell();
                 break;
             }
-            command.processCommand(msg);
+            parser.processCommand(msg);
         }
     }
 

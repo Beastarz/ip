@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class ClareCommand {
+public class Parser {
     private final UI ui;
     private final Storage storage;
     private final TaskList taskList;
 
-    public ClareCommand(UI ui, Storage storage, TaskList taskList) {
+    public Parser(UI ui, Storage storage, TaskList taskList) {
         this.ui = ui;
         this.storage = storage;
         this.taskList = taskList;
