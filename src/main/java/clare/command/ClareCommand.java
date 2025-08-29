@@ -34,50 +34,50 @@ public class ClareCommand {
         try {
             Commands command = Commands.valueOf(splits[0].toUpperCase());
             switch (command) {
-                case BYE:
-                    ui.farewell();
-                    return;
-                case LIST:
-                    showList();
-                    break;
-                case MARK:
-                    if (splits.length > 1) {
-                        mark(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case UNMARK:
-                    if (splits.length > 1) {
-                        unmark(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case TODO:
-                    createTodo(msg);
-                    break;
+            case BYE:
+                ui.farewell();
+                return;
+            case LIST:
+                showList();
+                break;
+            case MARK:
+                if (splits.length > 1) {
+                    mark(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case UNMARK:
+                if (splits.length > 1) {
+                    unmark(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case TODO:
+                createTodo(msg);
+                break;
 
-                case DEADLINE:
-                    createDeadline(msg);
-                    break;
+            case DEADLINE:
+                createDeadline(msg);
+                break;
 
-                case EVENT:
-                    createEvent(msg);
-                    break;
+            case EVENT:
+                createEvent(msg);
+                break;
 
-                case DELETE:
-                    if (splits.length > 1) {
-                        delete(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case FIND:
-                    find(msg);
-                    break;
-                default:
-                    ui.showMessage("I don't understand this duke.command :(");
+            case DELETE:
+                if (splits.length > 1) {
+                    delete(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case FIND:
+                find(msg);
+                break;
+            default:
+                ui.showMessage("I don't understand this duke.command :(");
                     break;
             }
             } catch (IllegalArgumentException e) {
