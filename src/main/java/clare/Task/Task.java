@@ -38,25 +38,25 @@ public abstract class Task {
         }
 
         switch (t) {
-            case T -> {
-                if (l.length < 3) {
-                    throw new StringConvertExceptions("Missing information on data" + data);
-                }
-                task = new Todo(l[2], isDone);
+        case T -> {
+            if (l.length < 3) {
+                throw new StringConvertExceptions("Missing information on data" + data);
             }
-            case D -> {
-                if (l.length < 4) {
-                    throw new StringConvertExceptions("Missing information on data" + data);
-                }
-                task = new Deadline(l[2], l[3], isDone);
+            task = new Todo(l[2], isDone);
+        }
+        case D -> {
+            if (l.length < 4) {
+                throw new StringConvertExceptions("Missing information on data" + data);
             }
-            case E -> {
-                if (l.length < 5) {
-                    throw new StringConvertExceptions("Missing information on data" + data);
-                }
-                task = new Event(l[2], l[3], l[4], isDone);
+            task = new Deadline(l[2], l[3], isDone);
+        }
+        case E -> {
+            if (l.length < 5) {
+                throw new StringConvertExceptions("Missing information on data" + data);
             }
-            default -> throw new StringConvertExceptions("Unknown type");
+            task = new Event(l[2], l[3], l[4], isDone);
+        }
+        default -> throw new StringConvertExceptions("Unknown type");
         }
         return task;
     }
@@ -117,5 +117,13 @@ public abstract class Task {
      */
     public abstract String toSaveString();
 
+    /**
+     * compares the given title with the task title
+     * @param title the title to be compared
+     * @return true if the task title contains the given title
+     */
+    public boolean compareTitle(String title) {
+        return this.title.contains(title);
+    }
 
 }

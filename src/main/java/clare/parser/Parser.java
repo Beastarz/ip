@@ -72,12 +72,15 @@ public class Parser {
                     ui.showMessage("Please provide a number!");
                 }
                 break;
+            case SEARCH:
+                findByDeadline(msg);
+                break;
             case FIND:
-                find(msg);
+                findByTitle(msg);
                 break;
             default:
                 ui.showMessage("I don't understand this duke.command :(");
-                    break;
+                break;
             }
             } catch (IllegalArgumentException e) {
                 ui.showMessage("I don't understand this duke.command :(");
@@ -233,7 +236,7 @@ public class Parser {
         ui.showMessage("deleted event: " + t + "\nNow you have " + taskList.size() + " tasks.");
     }
 
-    private void find(String msg) {
+    private void findByDeadline(String msg) {
         String[] s = msg.split(" ");
         LocalDate date;
         try {
@@ -243,5 +246,14 @@ public class Parser {
             return;
         }
         ui.showMessage(taskList.findTaskByDeadline(date));
+    }
+
+    private void findByTitle(String msg) {
+        try {
+            msg = msg.substring(5);
+            ui.showMessage(taskList.findTaskByTitle(msg));
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("Please provide a description");
+        }
     }
 }
