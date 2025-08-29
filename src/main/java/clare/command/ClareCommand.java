@@ -34,51 +34,54 @@ public class ClareCommand {
         try {
             Commands command = Commands.valueOf(splits[0].toUpperCase());
             switch (command) {
-                case BYE:
-                    ui.farewell();
-                    return;
-                case LIST:
-                    showList();
-                    break;
-                case MARK:
-                    if (splits.length > 1) {
-                        mark(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case UNMARK:
-                    if (splits.length > 1) {
-                        unmark(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case TODO:
-                    createTodo(msg);
-                    break;
+            case BYE:
+                ui.farewell();
+                return;
+            case LIST:
+                showList();
+                break;
+            case MARK:
+                if (splits.length > 1) {
+                    mark(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case UNMARK:
+                if (splits.length > 1) {
+                    unmark(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case TODO:
+                createTodo(msg);
+                break;
 
-                case DEADLINE:
-                    createDeadline(msg);
-                    break;
+            case DEADLINE:
+                createDeadline(msg);
+                break;
 
-                case EVENT:
-                    createEvent(msg);
-                    break;
+            case EVENT:
+                createEvent(msg);
+                break;
 
-                case DELETE:
-                    if (splits.length > 1) {
-                        delete(splits[1]);
-                    } else {
-                        ui.showMessage("Please provide a number!");
-                    }
-                    break;
-                case FIND:
-                    find(msg);
-                    break;
-                default:
-                    ui.showMessage("I don't understand this duke.command :(");
-                    break;
+            case DELETE:
+                if (splits.length > 1) {
+                    delete(splits[1]);
+                } else {
+                    ui.showMessage("Please provide a number!");
+                }
+                break;
+            case SEARCH:
+                findByDeadline(msg);
+                break;
+            case FIND:
+                findByTitle(msg);
+                break;
+            default:
+                ui.showMessage("I don't understand this duke.command :(");
+                break;
             }
             } catch (IllegalArgumentException e) {
                 ui.showMessage("I don't understand this duke.command :(");
@@ -234,7 +237,7 @@ public class ClareCommand {
         ui.showMessage("deleted event: " + t + "\nNow you have " + taskList.size() + " tasks.");
     }
 
-    private void find(String msg) {
+    private void findByDeadline(String msg) {
         String[] s = msg.split(" ");
         LocalDate date;
         try {
@@ -244,5 +247,14 @@ public class ClareCommand {
             return;
         }
         ui.showMessage(taskList.findTask(date));
+    }
+
+    private void findByTitle(String msg) {
+        try {
+            msg = msg.substring(5);
+            ui.showMessage(taskList.findTaskByTitle(msg));
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("Please provide a description");
+        }
     }
 }
