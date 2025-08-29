@@ -9,6 +9,9 @@ public class UI {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * prints out the welcome message
+     */
     public void welcome() {
         String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
         clareSays(welcomeText);
@@ -22,6 +25,10 @@ public class UI {
         clareSays(farewellText);
     }
 
+    /**
+     * prints out the msg given in the ui format
+     * @param msg the message to be printed out
+     */
     public void showMessage(String msg) {
         clareSays(msg);
     }

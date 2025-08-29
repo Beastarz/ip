@@ -101,36 +101,36 @@ class TaskListTest {
     }
 
     @Test
-    void testFindTask_NoMatchingDeadline() {
+    void testFindTaskByDeadline_NoMatchingDeadline() {
         TaskList taskList = new TaskList();
         taskList.add(todo1);
         taskList.add(event1);
         LocalDate searchDate = LocalDate.parse("2024-08-30");
-        String result = taskList.findTask(searchDate);
+        String result = taskList.findTaskByDeadline(searchDate);
         assertTrue(result.isEmpty());
     }
 
     @Test
-    void testFindTask_MatchingDeadline() {
+    void testFindTaskByDeadline_MatchingDeadline() {
         TaskList taskList = new TaskList();
         taskList.add(todo1);
         taskList.add(deadline1);
         taskList.add(event1);
         LocalDate searchDate = LocalDate.parse("2024-08-30");
-        String result = taskList.findTask(searchDate);
+        String result = taskList.findTaskByDeadline(searchDate);
         String expected = "[D][ ] submit report (by: Aug 30 2024)";
         assertEquals(expected, result.trim());
     }
 
     @Test
-    void testFindTask_MultipleMatchingDeadlines() {
+    void testFindTaskByDeadline_MultipleMatchingDeadlines() {
         try {
             TaskList taskList = new TaskList();
             taskList.add(new Deadline("urgent work", "2024-08-30", false));
             taskList.add(new Todo("another todo", false));
             taskList.add(new Deadline("follow up", "2024-08-30", true));
             LocalDate searchDate = LocalDate.parse("2024-08-30");
-            String result = taskList.findTask(searchDate);
+            String result = taskList.findTaskByDeadline(searchDate);
             String expected = "[D][ ] urgent work (by: Aug 30 2024)\n" +
                     "[D][X] follow up (by: Aug 30 2024)";
             assertEquals(expected, result.trim());

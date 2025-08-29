@@ -103,7 +103,7 @@ This is not a number!!
 [T][X] t /by 12
 ----------------------------------------
 ----------------------------------------
-I don't understand this clare.command :(
+I don't understand this clare.parser :(
 ----------------------------------------
 ----------------------------------------
 deleted event: [T][X] t

@@ -3,7 +3,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import clare.task.TaskList;
-import clare.command.Parser;
+import clare.parser.Parser;
 import clare.storage.Storage;
 import clare.exception.StringConvertExceptions;
 import clare.ui.UI;

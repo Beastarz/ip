@@ -1,4 +1,4 @@
-package clare.command;
+package clare.parser;
 
 import clare.task.Task;
 import clare.task.Deadline;
@@ -26,8 +26,7 @@ public class Parser {
 
     /**
      * process command from input
-     * @param msg the
-     *            ommand string
+     * @param msg the command string
      */
     public void processCommand(String msg) {
         String[] splits = msg.split(" ");
@@ -243,6 +242,6 @@ public class Parser {
             ui.showMessage("Invalid format: please follow this format, YYYY-MM-DD");
             return;
         }
-        ui.showMessage(taskList.findTask(date));
+        ui.showMessage(taskList.findTaskByDeadline(date));
     }
 }
