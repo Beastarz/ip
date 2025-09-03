@@ -11,6 +11,9 @@ import clare.task.Task;
 import clare.task.TaskList;
 import clare.exception.StringConvertExceptions;
 
+/**
+ * Represents the backend class to handle data CRUD
+ */
 public class Storage {
     final private String dataPath;
 
@@ -19,9 +22,9 @@ public class Storage {
     }
 
     /**
-     * Read duke.data from duke.data path and load task into tasks array
-     * @throws FileNotFoundException duke.exception when the file is not found
-     * @throws StringConvertExceptions duke.exception if there is string conversion error on the duke.command
+     * Reads data from the given data path and load task into tasks array
+     * @throws FileNotFoundException if the file is not found
+     * @throws StringConvertExceptions if there is string conversion error on the command
      */
     public ArrayList<Task> loadData() throws FileNotFoundException, StringConvertExceptions {
         File f = new File(dataPath);
@@ -34,9 +37,9 @@ public class Storage {
     }
 
     /**
-     * Overwrites the file from duke.data path from tasks array
+     * Overwrites the file from data path from tasks array
      * @param tasks the array of tasks
-     * @throws IOException duke.exception when the file has problem
+     * @throws IOException if the file has problem
      */
     public void rewriteData(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(dataPath);
@@ -45,9 +48,9 @@ public class Storage {
     }
 
     /**
-     * Add new line of duke.data to the file
-     * @param newTask the new duke.data to be added
-     * @throws IOException duke.exception when the file has problem
+     * Adds new line of data to the file
+     * @param newTask the new data to be added
+     * @throws IOException if the file has problem
      */
     public void addData(Task newTask) throws IOException{
         FileWriter fw = new FileWriter(dataPath, true);

@@ -28,7 +28,7 @@ public class Clare {
         Parser parser = new Parser(ui, storage, taskList);
         while (true) {
             String msg = scanner.nextLine();
-            if (Objects.equals(msg, "bye")) {
+            if (msg.startsWith("bye")) {
                 ui.farewell();
                 break;
             }

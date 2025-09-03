@@ -8,6 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+/**
+ * Represents a task type with a deadline and a start time
+ */
 public class Event extends Deadline{
     LocalDate startDate;
     LocalTime startTime;

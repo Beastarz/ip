@@ -1,5 +1,8 @@
 package clare.ui;
 
+/**
+ * Represents the user interface to respond and display messages
+ */
 public class UI {
     private final static String DIVIDER = "----------------------------------------";
 
@@ -10,7 +13,7 @@ public class UI {
     }
 
     /**
-     * prints out the welcome message
+     * Prints out the welcome message
      */
     public void welcome() {
         String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
@@ -18,7 +21,7 @@ public class UI {
     }
 
     /**
-     * print put the farewell message
+     * Print put the farewell message
      */
     public void farewell() {
         String farewellText = "Bye dear. I will miss you!";
@@ -26,7 +29,7 @@ public class UI {
     }
 
     /**
-     * prints out the msg given in the ui format
+     * Prints out the msg given in the ui format
      * @param msg the message to be printed out
      */
     public void showMessage(String msg) {

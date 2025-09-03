@@ -5,6 +5,9 @@ import clare.exception.StringConvertExceptions;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Represents the class to manage the list of task
+ */
 public class TaskList {
     private final ArrayList<Task> tasks;
 
@@ -21,10 +24,10 @@ public class TaskList {
     }
 
     /**
-     * delete a task using the index number
+     * Deletes a task using the index number
      * @param i the index
      * @return the task to be deleted
-     * @throws StringConvertExceptions exceptions when the given index is invalid
+     * @throws StringConvertExceptions if given index is invalid
      */
     public Task delete(int i) throws StringConvertExceptions {
         Task t;
@@ -38,10 +41,10 @@ public class TaskList {
     }
 
     /**
-     * mark a task done using an index
+     * Marks a task done using an index
      * @param i the index
      * @return the task marked done
-     * @throws StringConvertExceptions exception when the index given is invalid
+     * @throws StringConvertExceptions if the index given is invalid
      */
     public Task markDone(int i) throws StringConvertExceptions {
         Task t;
@@ -55,10 +58,10 @@ public class TaskList {
     }
 
     /**
-     * mark a task undone using an index
+     * Marks a task undone using an index
      * @param i the index
      * @return the task marked undone
-     * @throws StringConvertExceptions exception when the index given is invalid
+     * @throws StringConvertExceptions if the index given is invalid
      */
     public Task markUndone(int i) throws StringConvertExceptions {
         Task t;
@@ -72,7 +75,7 @@ public class TaskList {
     }
 
     /**
-     * return the size of the task list
+     * returns the size of the task list
      * @return the size of task list
      */
     public int size() {
@@ -80,7 +83,7 @@ public class TaskList {
     }
 
     /**
-     * get the string representation of all task
+     * Gets the string representation of all task
      * @return the string of all task in list
      */
     public String getAllTaskString() {
@@ -96,7 +99,7 @@ public class TaskList {
     }
 
     /**
-     * get the string of all task for storage
+     * Gets the string of all task for storage
      * @return the string for all task in save format
      */
     public String getAllTaskSaveString() {
@@ -109,14 +112,13 @@ public class TaskList {
     }
 
     /**
-     * get the string of tasks searched by deadline
+     * Gets the string of tasks searched by deadline
      * @param deadline the deadline of task
      * @return the string pf tasks within the deadline in list
      */
     public String findTaskByDeadline(LocalDate deadline) {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < tasks.size(); i++) {
-            Task t = tasks.get(i);
+        for (Task t : tasks) {
             if (t instanceof Deadline) {
                 if (((Deadline) t).checkDeadline(deadline)) {
                     if (!s.isEmpty()) {
@@ -130,14 +132,13 @@ public class TaskList {
     }
 
     /**
-     * get the string of tasks by title
+     * Gets the string of tasks by title
      * @param title the tile of task
      * @return the string of tasks with the title in list
      */
     public String findTaskByTitle(String title) {
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < tasks.size(); i++) {
-            Task t = tasks.get(i);
+        for (Task t : tasks) {
             if (t.compareTitle(title)) {
                 if (!s.isEmpty()) {
                     s.append("\n");

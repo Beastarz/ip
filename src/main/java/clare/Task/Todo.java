@@ -1,5 +1,8 @@
 package clare.task;
 
+/**
+ * Represents a task type which do not have any time constraints
+ */
 public class Todo extends Task{
     public Todo(String title, boolean isDone) {
         super(title, isDone);

@@ -4,6 +4,9 @@ import clare.exception.StringConvertExceptions;
 
 import java.util.Objects;
 
+/**
+ * Represents the super class of all task like Todo, Deadline, and Event
+ */
 public abstract class Task {
     private boolean isDone;
     private final String title;
@@ -62,7 +65,7 @@ public abstract class Task {
     }
 
     /**
-     * gets the title string
+     * Gets the title string
      * @return the string of title
      */
     protected String getTitle() {
@@ -70,7 +73,7 @@ public abstract class Task {
     }
 
     /**
-     * get string representation of status
+     * Gets string representation of status
      * @return string of status
      */
     protected String getIsDoneStatus() {
@@ -78,7 +81,7 @@ public abstract class Task {
     }
 
     /**
-     * get string representation of status to save
+     * Gets string representation of status to save
      * @return string of status
      */
     protected String getIsDoneInt() {
@@ -86,33 +89,33 @@ public abstract class Task {
     }
 
     /**
-     * mark isDone status as true
+     * Marks isDone status as true
      */
     public void markDone() {
         this.isDone = true;
     }
 
     /**
-     * mark isDone status as false
+     * Marks isDone status as false
      */
     public void markUndone() {
         this.isDone = false;
     }
 
     /**
-     * get the type of task
+     * Gets the type of task
      * @return TaskType
      */
     protected abstract TaskType getType();
 
     /**
-     * get the string of type of thr task
+     * Gets the string of type of thr task
      * @return string of type
      */
     abstract String getTypeString();
 
     /**
-     * get the string of task to save
+     * Gets the string of task to save
      * @return string to save
      */
     public abstract String toSaveString();

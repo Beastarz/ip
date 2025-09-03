@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents the class to parse commands
+ */
 public class Parser {
     private final UI ui;
     private final Storage storage;
@@ -25,7 +28,7 @@ public class Parser {
     }
 
     /**
-     * process command from input
+     * Processes command from input
      * @param msg the command string
      */
     public void processCommand(String msg) {
@@ -79,11 +82,11 @@ public class Parser {
                 findByTitle(msg);
                 break;
             default:
-                ui.showMessage("I don't understand this duke.command :(");
+                ui.showMessage("I don't understand this command :(");
                 break;
             }
             } catch (IllegalArgumentException e) {
-                ui.showMessage("I don't understand this duke.command :(");
+                ui.showMessage("I don't understand this command :(");
             }
 
     }

@@ -8,6 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+/**
+ * Represents a task type with a deadline
+ */
 public class Deadline extends Todo{
     LocalDate deadlineDate;
     LocalTime deadlineTime;
@@ -41,7 +44,7 @@ public class Deadline extends Todo{
     }
 
     /**
-     * check if the date give is same as the task deadline
+     * Checks if the date give is same as the task deadline
      * @param date the given date to compare
      * @return true if equals, false otherwise
      */
@@ -50,7 +53,7 @@ public class Deadline extends Todo{
     }
 
     /**
-     * get the string of deadline
+     * Gets the string of deadline
      * @return the string of deadline
      */
     protected String getDeadlineString() {
