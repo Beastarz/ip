@@ -4,12 +4,9 @@ package clare.ui;
  * Represents the user interface to respond and display messages
  */
 public class UI {
-    private static final String DIVIDER = "----------------------------------------";
 
     private static void clareSays(String msg) {
-        System.out.println(DIVIDER);
         System.out.println(msg);
-        System.out.println(DIVIDER);
     }
 
     /**

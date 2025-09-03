@@ -1,5 +1,7 @@
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import clare.exception.StringConvertExceptions;
@@ -13,21 +15,30 @@ import clare.ui.UI;
  */
 public class Clare {
     private static final Scanner scanner = new Scanner(System.in);
-    private static void run() {
-        UI ui = new UI();
-        ui.welcome();
-        Storage storage = new Storage("data/data.txt");
-        TaskList taskList;
+    private final UI ui = new UI();
+    private final Parser parser;
+
+    /**
+     * Contruct the Clare instance and load initial data
+     */
+    public Clare() {
+        TaskList tempTaskList;
+        String storagePath = "data/data.txt";
+        Storage storage = new Storage(storagePath);
         try {
-            taskList = new TaskList(storage.loadData());
+            tempTaskList = new TaskList(storage.loadData());
         } catch (FileNotFoundException e) {
             ui.showMessage("File not Found: " + e);
-            taskList = new TaskList();
+            tempTaskList = new TaskList();
         } catch (StringConvertExceptions e) {
             ui.showMessage("Error data format " + e);
-            taskList = new TaskList();
+            tempTaskList = new TaskList();
         }
-        Parser parser = new Parser(ui, storage, taskList);
+        TaskList taskList = tempTaskList;
+        parser = new Parser(ui, storage, taskList);
+    }
+
+    private void run() {
         while (true) {
             String msg = scanner.nextLine();
             if (msg.startsWith("bye")) {
@@ -39,6 +50,19 @@ public class Clare {
     }
 
     public static void main(String[] args) {
-        run();
+        Clare clare = new Clare();
+        clare.run();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+        parser.processCommand(input);
+        System.setOut(originalOut);
+        return outputStream.toString();
     }
 }

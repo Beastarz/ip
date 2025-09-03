@@ -16,7 +16,7 @@ public class Event extends Deadline {
     private LocalTime startTime;
 
     /**
-     * Constructor of the Event class
+     * Constructs the Event class
      * @param title the task title
      * @param startTime the start time of the event
      * @param deadline the deadline of the event
