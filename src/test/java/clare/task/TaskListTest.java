@@ -1,16 +1,16 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TaskListTest {
+import java.time.LocalDate;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import clare.exception.StringConvertExceptions;
+
+class TaskListTest {
     private Todo todo1;
     private Deadline deadline1;
     private Event event1;
@@ -82,9 +82,9 @@ class TaskListTest {
         taskList.add(todo1);
         taskList.add(deadline1);
         taskList.add(event1);
-        String expected = "[T][ ] read book\n" +
-                "[D][ ] submit report (by: Aug 30 2024)\n" +
-                "[E][ ] team meeting (from: Sept 1 2024 to: Sept 1 2024)";
+        String expected = "[T][ ] read book\n"
+                + "[D][ ] submit report (by: Aug 30 2024)\n"
+                + "[E][ ] team meeting (from: Sept 1 2024 to: Sept 1 2024)";
         assertEquals(expected, taskList.getAllTaskString());
     }
 
@@ -94,14 +94,14 @@ class TaskListTest {
         taskList.add(todo1);
         taskList.add(deadline1);
         taskList.add(event1);
-        String expected = "T|0|read book\n" +
-                "D|0|submit report|2024-08-30\n" +
-                    "E|0|team meeting|2024-09-01|2024-09-01\n";
+        String expected = "T|0|read book\n"
+                + "D|0|submit report|2024-08-30\n"
+                + "E|0|team meeting|2024-09-01|2024-09-01\n";
         assertEquals(expected, taskList.getAllTaskSaveString());
     }
 
     @Test
-    void testFindTaskByDeadline_NoMatchingDeadline() {
+    void testFindTaskByDeadline_noMatchingDeadline() {
         TaskList taskList = new TaskList();
         taskList.add(todo1);
         taskList.add(event1);
@@ -111,7 +111,7 @@ class TaskListTest {
     }
 
     @Test
-    void testFindTaskByDeadline_MatchingDeadline() {
+    void testFindTaskByDeadline_matchingDeadline() {
         TaskList taskList = new TaskList();
         taskList.add(todo1);
         taskList.add(deadline1);
@@ -123,7 +123,7 @@ class TaskListTest {
     }
 
     @Test
-    void testFindTaskByDeadline_MultipleMatchingDeadlines() {
+    void testFindTaskByDeadline_multipleMatchingDeadlines() {
         try {
             TaskList taskList = new TaskList();
             taskList.add(new Deadline("urgent work", "2024-08-30", false));
@@ -131,8 +131,8 @@ class TaskListTest {
             taskList.add(new Deadline("follow up", "2024-08-30", true));
             LocalDate searchDate = LocalDate.parse("2024-08-30");
             String result = taskList.findTaskByDeadline(searchDate);
-            String expected = "[D][ ] urgent work (by: Aug 30 2024)\n" +
-                    "[D][X] follow up (by: Aug 30 2024)";
+            String expected = "[D][ ] urgent work (by: Aug 30 2024)\n"
+                    + "[D][X] follow up (by: Aug 30 2024)";
             assertEquals(expected, result.trim());
         } catch (StringConvertExceptions e) {
             return;

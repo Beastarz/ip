@@ -1,8 +1,8 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
-
 import java.util.Objects;
+
+import clare.exception.StringConvertExceptions;
 
 /**
  * Represents the super class of all task like Todo, Deadline, and Event
@@ -85,7 +85,7 @@ public abstract class Task {
      * @return string of status
      */
     protected String getIsDoneInt() {
-        return  isDone ? "1" : "0";
+        return isDone ? "1" : "0";
     }
 
     /**

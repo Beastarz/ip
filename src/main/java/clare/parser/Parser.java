@@ -1,17 +1,17 @@
 package clare.parser;
 
-import clare.task.Task;
-import clare.task.Deadline;
-import clare.task.Event;
-import clare.task.Todo;
-import clare.task.TaskList;
-import clare.storage.Storage;
-import clare.exception.StringConvertExceptions;
-import clare.ui.UI;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+
+import clare.exception.StringConvertExceptions;
+import clare.storage.Storage;
+import clare.task.Deadline;
+import clare.task.Event;
+import clare.task.Task;
+import clare.task.TaskList;
+import clare.task.Todo;
+import clare.ui.UI;
 
 /**
  * Represents the class to parse commands
@@ -21,6 +21,12 @@ public class Parser {
     private final Storage storage;
     private final TaskList taskList;
 
+    /**
+     * Constructor for the class Parser
+     * @param ui The ui object that display the message
+     * @param storage The storage object that handle data storage
+     * @param taskList The list of tasks
+     */
     public Parser(UI ui, Storage storage, TaskList taskList) {
         this.ui = ui;
         this.storage = storage;
@@ -85,10 +91,9 @@ public class Parser {
                 ui.showMessage("I don't understand this command :(");
                 break;
             }
-            } catch (IllegalArgumentException e) {
-                ui.showMessage("I don't understand this command :(");
-            }
-
+        } catch (IllegalArgumentException e) {
+            ui.showMessage("I don't understand this command :(");
+        }
     }
 
     private void createTodo(String msg) {
@@ -143,7 +148,8 @@ public class Parser {
         msg = msg.substring(5); // remove prefix duke.command
         String[] s = msg.split(" /");
         if (s.length < 3) {
-            ui.showMessage("Please add a deadline and start time according to this format: event ... /from ... /to ....");
+            ui.showMessage("Please add a deadline and start time "
+                    + "according to this format: event ... /from ... /to ....");
             return;
         }
         if (!s[1].startsWith("from ") || !s[2].startsWith("to ")) {

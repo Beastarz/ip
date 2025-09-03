@@ -1,14 +1,15 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import clare.exception.StringConvertExceptions;
+
 public class TaskTest {
     @Test
-    public void testConvert_Todo() throws StringConvertExceptions {
+    public void testConvert_todo() throws StringConvertExceptions {
         String data = "T|0|read book";
         Task task = Task.convert(data);
         assertTrue(task instanceof Todo);
@@ -18,7 +19,7 @@ public class TaskTest {
     }
 
     @Test
-    public void testConvert_Deadline() throws StringConvertExceptions {
+    public void testConvert_deadline() throws StringConvertExceptions {
         String data = "D|1|return book|2023-10-26";
         Task task = Task.convert(data);
         assertTrue(task instanceof Deadline);
@@ -28,7 +29,7 @@ public class TaskTest {
     }
 
     @Test
-    public void testConvert_Event() throws StringConvertExceptions {
+    public void testConvert_event() throws StringConvertExceptions {
         String data = "E|0|project meeting|2023-11-01|2023-11-02";
         Task task = Task.convert(data);
         assertTrue(task instanceof Event);

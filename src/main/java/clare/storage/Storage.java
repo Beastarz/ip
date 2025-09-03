@@ -7,15 +7,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import clare.exception.StringConvertExceptions;
 import clare.task.Task;
 import clare.task.TaskList;
-import clare.exception.StringConvertExceptions;
 
 /**
  * Represents the backend class to handle data CRUD
  */
 public class Storage {
-    final private String dataPath;
+    private final String dataPath;
 
     public Storage(String path) {
         this.dataPath = path;
@@ -52,7 +52,7 @@ public class Storage {
      * @param newTask the new data to be added
      * @throws IOException if the file has problem
      */
-    public void addData(Task newTask) throws IOException{
+    public void addData(Task newTask) throws IOException {
         FileWriter fw = new FileWriter(dataPath, true);
         fw.write(newTask.toSaveString() + System.lineSeparator());
         fw.close();

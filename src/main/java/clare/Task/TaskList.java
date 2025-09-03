@@ -1,9 +1,10 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import clare.exception.StringConvertExceptions;
 
 /**
  * Represents the class to manage the list of task
@@ -90,7 +91,7 @@ public class TaskList {
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             s.append(tasks.get(i));
-            if (i == tasks.size()-1) {
+            if (i == tasks.size() - 1) {
                 break;
             }
             s.append("\n");

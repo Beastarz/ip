@@ -1,21 +1,28 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+import clare.exception.StringConvertExceptions;
+
 /**
  * Represents a task type with a deadline
  */
-public class Deadline extends Todo{
-    LocalDate deadlineDate;
-    LocalTime deadlineTime;
+public class Deadline extends Todo {
+    private LocalDate deadlineDate;
+    private LocalTime deadlineTime;
 
-    public Deadline(String title, String deadline, boolean isDone) throws StringConvertExceptions{
+    /**
+     * Constructor for Deadline class
+     * @param title the task title
+     * @param deadline the deadline of the task
+     * @param isDone the status
+     * @throws StringConvertExceptions if the format is invalid
+     */
+    public Deadline(String title, String deadline, boolean isDone) throws StringConvertExceptions {
         super(title, isDone);
         try {
             String[] d = deadline.split(" ");
@@ -29,7 +36,8 @@ public class Deadline extends Todo{
                 deadlineTime = LocalTime.parse(d[1]);
             }
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("Error deadline format: " + deadline + " Please follow this format YYYY-MM-DD HH:MM");
+            throw new StringConvertExceptions("Error deadline format: "
+                    + deadline + " Please follow this format YYYY-MM-DD HH:MM");
         }
     }
 
@@ -57,16 +65,19 @@ public class Deadline extends Todo{
      * @return the string of deadline
      */
     protected String getDeadlineString() {
-        return deadlineDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + (deadlineTime == null ? "" : (" " + deadlineTime));
+        return deadlineDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + (deadlineTime == null ? "" : (" " + deadlineTime));
     }
 
     @Override
     public String toString() {
-        return "[" + getTypeString() + "]" +  super.toString().substring(3) + " (by: " + getDeadlineString() + ")";
+        return "[" + getTypeString() + "]" + super.toString().substring(3)
+                + " (by: " + getDeadlineString() + ")";
     }
 
     @Override
     public String toSaveString() {
-        return getTypeString() + super.toSaveString().substring(1) + "|" + deadlineDate + (deadlineTime == null ? "" : (" " +deadlineTime));
+        return getTypeString() + super.toSaveString().substring(1)
+                + "|" + deadlineDate + (deadlineTime == null ? "" : (" " + deadlineTime));
     }
 }

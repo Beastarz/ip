@@ -3,7 +3,7 @@ package clare.task;
 /**
  * Represents a task type which do not have any time constraints
  */
-public class Todo extends Task{
+public class Todo extends Task {
     public Todo(String title, boolean isDone) {
         super(title, isDone);
     }
@@ -25,6 +25,6 @@ public class Todo extends Task{
 
     @Override
     public String toSaveString() {
-        return  getTypeString() + "|" + getIsDoneInt() + "|" + getTitle();
+        return getTypeString() + "|" + getIsDoneInt() + "|" + getTitle();
     }
 }

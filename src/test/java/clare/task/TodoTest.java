@@ -1,7 +1,8 @@
 package clare.task;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class TodoTest {
 
@@ -18,13 +19,13 @@ class TodoTest {
     }
 
     @Test
-    void testToString_Done() {
+    void testToString_done() {
         Todo todo = new Todo("finish homework", true);
         assertEquals("[T][X] finish homework", todo.toString());
     }
 
     @Test
-    void testToSaveString_Done() {
+    void testToSaveString_done() {
         Todo todo = new Todo("finish homework", true);
         assertEquals("T|1|finish homework", todo.toSaveString());
     }

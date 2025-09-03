@@ -1,17 +1,19 @@
+
 import java.io.FileNotFoundException;
-import java.util.Objects;
 import java.util.Scanner;
 
-import clare.task.TaskList;
+import clare.exception.StringConvertExceptions;
 import clare.parser.Parser;
 import clare.storage.Storage;
-import clare.exception.StringConvertExceptions;
+import clare.task.TaskList;
 import clare.ui.UI;
 
+/**
+ * Represents the main class of the application
+ */
 public class Clare {
-    final static Scanner scanner = new Scanner(System.in);
-
-    public static void run() {
+    private static final Scanner scanner = new Scanner(System.in);
+    private static void run() {
         UI ui = new UI();
         ui.welcome();
         Storage storage = new Storage("data/data.txt");

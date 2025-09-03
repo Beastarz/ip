@@ -1,20 +1,28 @@
 package clare.task;
 
-import clare.exception.StringConvertExceptions;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
+import clare.exception.StringConvertExceptions;
+
 /**
  * Represents a task type with a deadline and a start time
  */
-public class Event extends Deadline{
-    LocalDate startDate;
-    LocalTime startTime;
+public class Event extends Deadline {
+    private LocalDate startDate;
+    private LocalTime startTime;
 
+    /**
+     * Constructor of the Event class
+     * @param title the task title
+     * @param startTime the start time of the event
+     * @param deadline the deadline of the event
+     * @param isDone the task status
+     * @throws StringConvertExceptions if the format is invalid
+     */
     public Event(String title, String startTime, String deadline, boolean isDone) throws StringConvertExceptions {
         super(title, deadline, isDone);
         try {
@@ -29,7 +37,8 @@ public class Event extends Deadline{
                 this.startTime = LocalTime.parse(d[1]);
             }
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("Error start date format: " + deadline + " Please follow this format YYYY-MM-DD HH:MM");
+            throw new StringConvertExceptions("Error start date format: "
+                    + deadline + " Please follow this format YYYY-MM-DD HH:MM");
         }
     }
 
@@ -44,16 +53,19 @@ public class Event extends Deadline{
     }
 
     private String getStartTime() {
-        return startDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))+ (startTime == null ? "" : (" " + startTime));
+        return startDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                + (startTime == null ? "" : (" " + startTime));
     }
 
     @Override
     public String toString() {
-        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle() + " (from: " + getStartTime() + " to: " + getDeadlineString() + ")";
+        return "[" + getTypeString() + "]" + getIsDoneStatus() + " " + getTitle()
+                + " (from: " + getStartTime() + " to: " + getDeadlineString() + ")";
     }
 
     @Override
     public String toSaveString() {
-        return getTypeString() +  super.toSaveString().substring(1) + "|" + startDate + (startTime == null ? "" : (" " +startTime));
+        return getTypeString() + super.toSaveString().substring(1)
+                + "|" + startDate + (startTime == null ? "" : (" " + startTime));
     }
 }
