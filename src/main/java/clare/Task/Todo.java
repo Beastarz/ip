@@ -5,7 +5,7 @@ package clare.task;
  */
 public class Todo extends Task {
     public Todo(String title, boolean isDone) {
-        super(title, isDone);
+        super(title.trim(), isDone);
     }
 
     @Override

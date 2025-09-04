@@ -125,7 +125,7 @@ public abstract class Task {
      * @param title the title to be compared
      * @return true if the task title contains the given title
      */
-    public boolean compareTitle(String title) {
+    public boolean equalsTitle(String title) {
         return this.title.contains(title);
     }
 

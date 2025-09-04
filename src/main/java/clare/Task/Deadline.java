@@ -12,7 +12,7 @@ import clare.exception.StringConvertExceptions;
  * Represents a task type with a deadline
  */
 public class Deadline extends Todo {
-    private LocalDate deadlineDate;
+    private final LocalDate deadlineDate;
     private LocalTime deadlineTime;
 
     /**

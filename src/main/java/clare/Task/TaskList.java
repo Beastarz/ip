@@ -137,15 +137,16 @@ public class TaskList {
      * @param title the tile of task
      * @return the string of tasks with the title in list
      */
-    public String findTaskByTitle(String title) {
+    public String findTaskByTitle(String ... title) {
         StringBuilder s = new StringBuilder();
         for (Task t : tasks) {
-            if (t.compareTitle(title)) {
-                if (!s.isEmpty()) {
-                    s.append("\n");
+            for (String tit : title) {
+                if (t.equalsTitle(tit)) {
+                    if (!s.isEmpty()) {
+                        s.append("\n");
+                    }
+                    s.append(t);
                 }
-                s.append(t);
-
             }
         }
         return s.isEmpty() ? "No task found." : s.toString();
