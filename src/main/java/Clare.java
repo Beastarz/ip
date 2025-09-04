@@ -19,7 +19,7 @@ public class Clare {
     private final Parser parser;
 
     /**
-     * Contruct the Clare instance and load initial data
+     * Constructs the Clare instance and load initial data
      */
     public Clare() {
         TaskList tempTaskList;

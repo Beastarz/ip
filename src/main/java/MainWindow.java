@@ -34,7 +34,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Injects the stage instance
+     * Injects the Stage instance
      */
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -51,7 +51,7 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     private void handleUserInput() {
-        String input = userInput.getText();
+        String input = userInput.getText().trim();
         if (input.split(" ")[0].equals("bye")) {
             stage.close();
             return;

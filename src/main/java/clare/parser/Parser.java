@@ -49,37 +49,25 @@ public class Parser {
                 showList();
                 break;
             case MARK:
-                if (splits.length > 1) {
-                    mark(splits[1]);
-                } else {
-                    ui.showMessage("Please provide a number!");
-                }
+                msg = msg.substring(4).trim();
+                mark(msg);
                 break;
             case UNMARK:
-                if (splits.length > 1) {
-                    unmark(splits[1]);
-                } else {
-                    ui.showMessage("Please provide a number!");
-                }
+                msg = msg.substring(6).trim();
+                unmark(msg);
                 break;
             case TODO:
                 createTodo(msg);
                 break;
-
             case DEADLINE:
                 createDeadline(msg);
                 break;
-
             case EVENT:
                 createEvent(msg);
                 break;
-
             case DELETE:
-                if (splits.length > 1) {
-                    delete(splits[1]);
-                } else {
-                    ui.showMessage("Please provide a number!");
-                }
+                msg = msg.substring(6).trim();
+                delete(msg);
                 break;
             case SEARCH:
                 findByDeadline(msg);
@@ -260,7 +248,7 @@ public class Parser {
     private void findByTitle(String msg) {
         try {
             msg = msg.substring(5);
-            ui.showMessage(taskList.findTaskByTitle(msg));
+            ui.showMessage(taskList.findTaskByTitle(msg.split(" ")));
         } catch (IndexOutOfBoundsException e) {
             ui.showMessage("Please provide a description");
         }
