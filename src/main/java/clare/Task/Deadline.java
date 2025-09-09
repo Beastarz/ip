@@ -17,6 +17,7 @@ public class Deadline extends Todo {
 
     /**
      * Constructor for Deadline class
+     *
      * @param title the task title
      * @param deadline the deadline of the task
      * @param isDone the status
@@ -53,6 +54,7 @@ public class Deadline extends Todo {
 
     /**
      * Checks if the date give is same as the task deadline
+     *
      * @param date the given date to compare
      * @return true if equals, false otherwise
      */
@@ -62,6 +64,7 @@ public class Deadline extends Todo {
 
     /**
      * Gets the string of deadline
+     *
      * @return the string of deadline
      */
     protected String getDeadlineString() {
