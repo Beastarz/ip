@@ -37,6 +37,7 @@ public class Parser {
      * Processes command from input
      * @param msg the command string
      */
+    @SuppressWarnings("checkstyle:SingleSpaceSeparator")
     public void processCommand(String msg) {
         String[] splits = msg.split(" ");
         try {
@@ -77,6 +78,7 @@ public class Parser {
                 break;
             default:
                 ui.showMessage("I don't understand this command :(");
+                assert false; //assumes that all case will be handled by exceptions
                 break;
             }
         } catch (IllegalArgumentException e) {
@@ -89,7 +91,7 @@ public class Parser {
             ui.showMessage("Please add a description.");
             return;
         }
-        msg = msg.substring(5); // remove prefix duke.command
+        msg = msg.substring(4).trim(); // remove prefix
 
         Task newTask = new Todo(msg, false);
         try {
@@ -103,7 +105,7 @@ public class Parser {
     }
 
     private void createDeadline(String msg) {
-        msg = msg.substring(8); // remove prefix duke.command
+        msg = msg.substring(8); // remove prefix
         String[] s = msg.split(" /");
         if (s.length < 2) {
             ui.showMessage("Please add a deadline according to this format: deadline ... /by ....");
@@ -128,12 +130,13 @@ public class Parser {
             ui.showMessage("Something went wrong." + e);
             return;
         }
+        assert newTask instanceof Deadline;
         taskList.add(newTask);
         ui.showMessage("added deadline: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
 
     private void createEvent(String msg) {
-        msg = msg.substring(5); // remove prefix duke.command
+        msg = msg.substring(5); // remove prefix
         String[] s = msg.split(" /");
         if (s.length < 3) {
             ui.showMessage("Please add a deadline and start time "
@@ -159,6 +162,7 @@ public class Parser {
             ui.showMessage("Something went wrong." + e);
             return;
         }
+        assert newTask instanceof Event;
         taskList.add(newTask);
         ui.showMessage("added event: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
@@ -185,6 +189,9 @@ public class Parser {
         } catch (StringConvertExceptions e) {
             ui.showMessage("Invalid format: " + e);
             return;
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("No such task!");
+            return;
         }
         ui.showMessage("I have marked this task done:" + " \n  " + (i + 1) + ". " + t);
     }
@@ -206,6 +213,9 @@ public class Parser {
             return;
         } catch (StringConvertExceptions e) {
             ui.showMessage("Invalid format: " + e);
+            return;
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("No such task!");
             return;
         }
         ui.showMessage("I have marked this task undone:" + " \n  " + (i + 1) + ". " + t);
