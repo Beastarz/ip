@@ -1,7 +1,6 @@
 package clare.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
@@ -84,7 +83,7 @@ class TaskListTest {
         taskList.add(event1);
         String expected = "[T][ ] read book\n"
                 + "[D][ ] submit report (by: Aug 30 2024)\n"
-                + "[E][ ] team meeting (from: Sept 1 2024 to: Sept 1 2024)";
+                + "[E][ ] team meeting (from: Sep 1 2024 to: Sep 1 2024)";
         assertEquals(expected, taskList.getAllTaskString());
     }
 
@@ -107,7 +106,7 @@ class TaskListTest {
         taskList.add(event1);
         LocalDate searchDate = LocalDate.parse("2024-08-30");
         String result = taskList.findTaskByDeadline(searchDate);
-        assertTrue(result.isEmpty());
+        assertEquals("No task found.", result);
     }
 
     @Test
@@ -135,7 +134,7 @@ class TaskListTest {
                     + "[D][X] follow up (by: Aug 30 2024)";
             assertEquals(expected, result.trim());
         } catch (StringConvertExceptions e) {
-            return;
+            assertEquals(1, 2); // make an assertion failure
         }
     }
 }

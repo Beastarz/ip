@@ -146,6 +146,7 @@ public class TaskList {
                         s.append("\n");
                     }
                     s.append(t);
+                    break;
                 }
             }
         }

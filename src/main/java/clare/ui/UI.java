@@ -13,7 +13,7 @@ public class UI {
      * Prints out the welcome message
      */
     public void welcome() {
-        String welcomeText = "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?";
+        String welcomeText = "Hello, I am Clare!\nSo happy to see you today.\nWhat can I help?";
         clareSays(welcomeText);
     }
 

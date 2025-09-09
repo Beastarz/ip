@@ -29,7 +29,9 @@ class UiTest {
         UI ui = new UI();
         ui.welcome();
         String expectedOutput =
-                "Hello dear, I am Clare!\n";
+                "Hello, I am Clare!\n"
+                        + "So happy to see you today.\n"
+                        + "What can I help?";
         String output = outContent.toString();
         assertTrue(output.contains(expectedOutput));
     }
