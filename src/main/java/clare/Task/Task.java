@@ -64,6 +64,10 @@ public abstract class Task {
         return task;
     }
 
+    public int compareTitle(Task a) {
+        return title.compareTo(a.title);
+    }
+
     /**
      * Gets the title string
      * @return the string of title

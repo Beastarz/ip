@@ -148,4 +148,53 @@ public class TaskList {
         }
         return s.isEmpty() ? "No task found." : s.toString();
     }
+
+    /**
+     * sorts task list by title
+     *
+     * @return the string of sorted tasks
+     */
+    public String sortTaskByTitle(boolean isAsc) {
+        tasks.sort((a, b) -> a.compareTitle(b) * (isAsc ? 1 : -1));
+        return getAllTaskString();
+    }
+
+    /**
+     * sorts task by deadlines, task without deadline will be sorted by their title
+     *
+     * @return the string of sorted tasks
+     */
+    public String sortTaskByDeadline(boolean isAsc) {
+        tasks.sort((a, b) -> {
+            if (!(a instanceof Deadline) && !(b instanceof Deadline)) {
+                return a.compareTitle(b);
+            } else if (!(a instanceof Deadline)) {
+                return 1;
+            } else if (!(b instanceof Deadline)) {
+                return -1;
+            }
+            return ((Deadline) a).compareDeadline((Deadline) b) * (isAsc ? 1 : -1);
+        });
+        return getAllTaskString();
+    }
+
+    /**
+     * sorts task by start dates, task without start dates will be sorted by their title
+     *
+     * @return the string of sorted tasks
+     */
+    public String sortTaskByStartDate(boolean isAsc) {
+        tasks.sort((a, b) -> {
+            if (!(a instanceof Event) && !(b instanceof Event)) {
+                return a.compareTitle(b);
+            } else if (!(a instanceof Event)) {
+                return 1;
+            } else if (!(b instanceof Event)) {
+                return -1;
+            }
+            return ((Event) a).compareStartTime((Event) b) * (isAsc ? 1 : -1);
+        });
+        return getAllTaskString();
+    }
+
 }

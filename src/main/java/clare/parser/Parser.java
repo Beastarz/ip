@@ -76,6 +76,9 @@ public class Parser {
             case FIND:
                 findByTitle(msg);
                 break;
+            case SORT:
+                sort(msg);
+                break;
             default:
                 ui.showMessage("I don't understand this command :(");
                 assert false; //assumes that all case will be handled by exceptions
@@ -275,6 +278,36 @@ public class Parser {
             ui.showMessage(taskList.findTaskByTitle(s));
         } catch (IndexOutOfBoundsException e) {
             ui.showMessage("Please provide a description");
+        }
+    }
+
+    private void sort(String msg) {
+        boolean isAsc = true;
+        msg = msg.substring(4).trim();
+        if (msg.startsWith("-")) {
+            if (msg.startsWith("-d")) {
+                isAsc = false;
+            } else if (msg.startsWith("-a")) {
+            } else {
+                ui.showMessage("I don't understand this command");
+                return;
+            }
+            msg = msg.substring(2).trim();
+        }
+        if (msg.startsWith("title")) {
+            ui.showMessage(taskList.sortTaskByTitle(isAsc));
+        } else if (msg.startsWith("deadline")) {
+            ui.showMessage(taskList.sortTaskByDeadline(isAsc));
+        } else if (msg.startsWith("start")) {
+            ui.showMessage(taskList.sortTaskByStartDate(isAsc));
+        } else {
+            ui.showMessage("Unknown command, please follow format -- sort (-a/-d) (title/deadline/start) ");
+            return;
+        }
+        try {
+            storage.rewriteData(taskList);
+        } catch (IOException e) {
+            ui.showMessage("Storage error.");
         }
     }
 }
