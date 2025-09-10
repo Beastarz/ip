@@ -12,6 +12,6 @@ public class StringConvertExceptions extends Exception {
 
     @Override
     public String toString() {
-        return "String conversion duke.exception: error processing string " + str;
+        return str;
     }
 }

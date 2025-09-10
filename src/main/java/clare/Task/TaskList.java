@@ -1,6 +1,5 @@
 package clare.task;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -26,6 +25,7 @@ public class TaskList {
 
     /**
      * Deletes a task using the index number
+     *
      * @param i the index
      * @return the task to be deleted
      * @throws StringConvertExceptions if given index is invalid
@@ -43,42 +43,35 @@ public class TaskList {
 
     /**
      * Marks a task done using an index
+     *
      * @param i the index
      * @return the task marked done
      * @throws StringConvertExceptions if the index given is invalid
      */
     public Task markDone(int i) throws StringConvertExceptions {
         Task t;
-        try {
-            t = tasks.get(i);
-            assert t != null;
-            t.markDone();
-            return t;
-        } catch (IndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("There is no such task");
-        }
+        t = tasks.get(i);
+        t.markDone();
+        return t;
     }
 
     /**
      * Marks a task undone using an index
+     *
      * @param i the index
      * @return the task marked undone
      * @throws StringConvertExceptions if the index given is invalid
      */
     public Task markUndone(int i) throws StringConvertExceptions {
         Task t;
-        try {
-            t = tasks.get(i);
-            assert t != null;
-            t.markUndone();
-            return t;
-        } catch (IndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("There is no such task");
-        }
+        t = tasks.get(i);
+        t.markUndone();
+        return t;
     }
 
     /**
      * returns the size of the task list
+     *
      * @return the size of task list
      */
     public int size() {
@@ -87,6 +80,7 @@ public class TaskList {
 
     /**
      * Gets the string representation of all task
+     *
      * @return the string of all task in list
      */
     public String getAllTaskString() {

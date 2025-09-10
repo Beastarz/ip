@@ -23,6 +23,7 @@ public class Storage {
 
     /**
      * Reads data from the given data path and load task into tasks array
+     *
      * @throws FileNotFoundException if the file is not found
      * @throws StringConvertExceptions if there is string conversion error on the command
      */
@@ -38,6 +39,7 @@ public class Storage {
 
     /**
      * Overwrites the file from data path from tasks array
+     *
      * @param tasks the array of tasks
      * @throws IOException if the file has problem
      */
@@ -49,6 +51,7 @@ public class Storage {
 
     /**
      * Adds new line of data to the file
+     *
      * @param newTask the new data to be added
      * @throws IOException if the file has problem
      */
