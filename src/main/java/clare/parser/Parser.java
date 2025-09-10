@@ -3,6 +3,7 @@ package clare.parser;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 
 import clare.exception.StringConvertExceptions;
 import clare.storage.Storage;
@@ -85,11 +86,11 @@ public class Parser {
     }
 
     private void createTodo(String msg) {
-        if (msg.length() < 5) {
+        msg = msg.substring(4).trim(); // remove prefix
+        if (msg.isEmpty()) {
             ui.showMessage("Please add a description.");
             return;
         }
-        msg = msg.substring(5); // remove prefix duke.command
 
         Task newTask = new Todo(msg, false);
         try {
@@ -103,8 +104,11 @@ public class Parser {
     }
 
     private void createDeadline(String msg) {
-        msg = msg.substring(8); // remove prefix duke.command
-        String[] s = msg.split(" /");
+        msg = msg.substring(8).trim(); // remove prefix duke.command
+        String[] s = Arrays.stream(msg.split("/")) // separate the msg and trim
+                .map(String::trim)
+                .filter(str -> !str.isBlank())
+                .toArray(String[]::new);
         if (s.length < 2) {
             ui.showMessage("Please add a deadline according to this format: deadline ... /by ....");
             return;
@@ -116,7 +120,7 @@ public class Parser {
         Task newTask;
 
         try {
-            newTask = new Deadline(s[0].substring(1), s[1].substring(3), false);
+            newTask = new Deadline(s[0], s[1].substring(3), false);
         } catch (StringConvertExceptions e) {
             ui.showMessage(e.toString());
             return;
@@ -134,7 +138,10 @@ public class Parser {
 
     private void createEvent(String msg) {
         msg = msg.substring(5); // remove prefix duke.command
-        String[] s = msg.split(" /");
+        String[] s = Arrays.stream(msg.split("/")) // separate the msg and trim
+                .map(String::trim)
+                .filter(str -> !str.isBlank())
+                .toArray(String[]::new);
         if (s.length < 3) {
             ui.showMessage("Please add a deadline and start time "
                     + "according to this format: event ... /from ... /to ....");
@@ -147,7 +154,7 @@ public class Parser {
 
         Task newTask;
         try {
-            newTask = new Event(s[0].substring(1), s[1].substring(5), s[2].substring(3), false);
+            newTask = new Event(s[0], s[1].substring(5), s[2].substring(3), false);
         } catch (StringConvertExceptions e) {
             ui.showMessage(e.toString());
             return;
@@ -234,11 +241,11 @@ public class Parser {
     }
 
     private void findByDeadline(String msg) {
-        String[] s = msg.split(" ");
+        String[] s = msg.substring(6).trim().split(" ");
         LocalDate date;
         try {
-            date = LocalDate.parse(s[1]);
-        } catch (StringIndexOutOfBoundsException | DateTimeParseException e) {
+            date = LocalDate.parse(s[0]);
+        } catch (ArrayIndexOutOfBoundsException | DateTimeParseException e) {
             ui.showMessage("Invalid format: please follow this format, YYYY-MM-DD");
             return;
         }
@@ -248,7 +255,11 @@ public class Parser {
     private void findByTitle(String msg) {
         try {
             msg = msg.substring(5);
-            ui.showMessage(taskList.findTaskByTitle(msg.split(" ")));
+            String[] s = Arrays.stream(msg.split(" "))
+                    .filter(str -> !str.isBlank())
+                    .map(String::trim)
+                    .toArray(String[]::new);
+            ui.showMessage(taskList.findTaskByTitle(s));
         } catch (IndexOutOfBoundsException e) {
             ui.showMessage("Please provide a description");
         }
