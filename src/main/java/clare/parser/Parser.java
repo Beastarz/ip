@@ -78,6 +78,7 @@ public class Parser {
                 break;
             default:
                 ui.showMessage("I don't understand this command :(");
+                assert false; //assumes that all case will be handled by exceptions
                 break;
             }
         } catch (IllegalArgumentException e) {
@@ -99,6 +100,7 @@ public class Parser {
             ui.showMessage("Something went wrong." + e);
             return;
         }
+
         taskList.add(newTask);
         ui.showMessage("added todo: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
@@ -117,10 +119,10 @@ public class Parser {
             ui.showMessage("Wrong format!!\nPlease input according to this format: deadline ... /by ...");
             return;
         }
-        Task newTask;
 
+        Task newTask;
         try {
-            newTask = new Deadline(s[0], s[1].substring(3), false);
+            newTask = new Deadline(s[0], s[1].substring(3).trim(), false);
         } catch (StringConvertExceptions e) {
             ui.showMessage(e.toString());
             return;
@@ -132,6 +134,7 @@ public class Parser {
             ui.showMessage("Something went wrong." + e);
             return;
         }
+        assert newTask instanceof Deadline;
         taskList.add(newTask);
         ui.showMessage("added deadline: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
@@ -154,7 +157,7 @@ public class Parser {
 
         Task newTask;
         try {
-            newTask = new Event(s[0], s[1].substring(5), s[2].substring(3), false);
+            newTask = new Event(s[0], s[1].substring(5).trim(), s[2].substring(3).trim(), false);
         } catch (StringConvertExceptions e) {
             ui.showMessage(e.toString());
             return;
@@ -166,6 +169,7 @@ public class Parser {
             ui.showMessage("Something went wrong." + e);
             return;
         }
+        assert newTask instanceof Event;
         taskList.add(newTask);
         ui.showMessage("added event: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
@@ -182,6 +186,7 @@ public class Parser {
             ui.showMessage("This is not a number!!");
             return;
         }
+
         Task t;
         try {
             t = taskList.markDone(i);
@@ -191,6 +196,9 @@ public class Parser {
             return;
         } catch (StringConvertExceptions e) {
             ui.showMessage("Invalid format: " + e);
+            return;
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("No such task!");
             return;
         }
         ui.showMessage("I have marked this task done:" + " \n  " + (i + 1) + ". " + t);
@@ -204,6 +212,7 @@ public class Parser {
             ui.showMessage("This is not a number!!");
             return;
         }
+
         Task t;
         try {
             t = taskList.markUndone(i);
@@ -213,6 +222,9 @@ public class Parser {
             return;
         } catch (StringConvertExceptions e) {
             ui.showMessage("Invalid format: " + e);
+            return;
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("No such task!");
             return;
         }
         ui.showMessage("I have marked this task undone:" + " \n  " + (i + 1) + ". " + t);
@@ -226,6 +238,7 @@ public class Parser {
             ui.showMessage("This is not a number!!");
             return;
         }
+
         Task t;
         try {
             t = taskList.delete(i);
