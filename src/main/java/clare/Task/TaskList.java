@@ -51,6 +51,7 @@ public class TaskList {
         Task t;
         try {
             t = tasks.get(i);
+            assert t != null;
             t.markDone();
             return t;
         } catch (IndexOutOfBoundsException e) {
@@ -68,6 +69,7 @@ public class TaskList {
         Task t;
         try {
             t = tasks.get(i);
+            assert t != null;
             t.markUndone();
             return t;
         } catch (IndexOutOfBoundsException e) {
