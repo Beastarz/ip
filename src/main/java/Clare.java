@@ -22,19 +22,18 @@ public class Clare {
      * Constructs the Clare instance and load initial data
      */
     public Clare() {
-        TaskList tempTaskList;
+        TaskList taskList;
         String storagePath = "data/data.txt";
         Storage storage = new Storage(storagePath);
         try {
-            tempTaskList = new TaskList(storage.loadData());
+            taskList = new TaskList(storage.loadData());
         } catch (FileNotFoundException e) {
             ui.showMessage("File not Found: " + e);
-            tempTaskList = new TaskList();
+            taskList = new TaskList();
         } catch (StringConvertExceptions e) {
             ui.showMessage("Error data format " + e);
-            tempTaskList = new TaskList();
+            taskList = new TaskList();
         }
-        TaskList taskList = tempTaskList;
         parser = new Parser(ui, storage, taskList);
     }
 

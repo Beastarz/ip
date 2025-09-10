@@ -27,6 +27,7 @@ public class UI {
 
     /**
      * Prints out the msg given in the ui format
+     *
      * @param msg the message to be printed out
      */
     public void showMessage(String msg) {
