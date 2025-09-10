@@ -62,6 +62,10 @@ public class Deadline extends Todo {
         return deadlineDate.equals(date);
     }
 
+    public int compareDeadline(Deadline b) {
+        return deadlineDate.isAfter(b.deadlineDate) ? 1 : -1;
+    }
+
     /**
      * Gets the string of deadline
      *

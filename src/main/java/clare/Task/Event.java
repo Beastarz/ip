@@ -12,11 +12,12 @@ import clare.exception.StringConvertExceptions;
  * Represents a task type with a deadline and a start time
  */
 public class Event extends Deadline {
-    private LocalDate startDate;
+    private final LocalDate startDate;
     private LocalTime startTime;
 
     /**
      * Constructs the Event class
+     *
      * @param title the task title
      * @param startTime the start time of the event
      * @param deadline the deadline of the event
@@ -55,6 +56,10 @@ public class Event extends Deadline {
     private String getStartTime() {
         return startDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
                 + (startTime == null ? "" : (" " + startTime));
+    }
+
+    public int compareStartTime(Event event) {
+        return startDate.isAfter(event.startDate) ? 1 : -1;
     }
 
     @Override
