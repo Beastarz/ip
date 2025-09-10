@@ -36,7 +36,7 @@ public class Deadline extends Todo {
                 deadlineTime = LocalTime.parse(d[1]);
             }
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("Error deadline format: "
+            throw new StringConvertExceptions("Invalid deadline format: "
                     + deadline + " Please follow this format YYYY-MM-DD HH:MM");
         }
     }
