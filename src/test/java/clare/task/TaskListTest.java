@@ -42,7 +42,7 @@ class TaskListTest {
         Task deletedTask = taskList.delete(0);
         assertEquals(1, taskList.size());
         assertEquals(todo1, deletedTask);
-        assertEquals("[D][ ] submit report (by: Aug 30 2024)", taskList.getAllTaskString());
+        assertEquals("1. [D][ ] submit report (by: Aug 30 2024)", taskList.getAllTaskString());
     }
 
     @Test
@@ -51,7 +51,7 @@ class TaskListTest {
         taskList.add(todo1); // Initially undone
         Task markedTask = taskList.markDone(0);
         assertEquals("[T][X] read book", markedTask.toString());
-        assertEquals("[T][X] read book", taskList.getAllTaskString());
+        assertEquals("1. [T][X] read book", taskList.getAllTaskString());
     }
 
     @Test
@@ -61,7 +61,7 @@ class TaskListTest {
         taskList.add(doneTodo); // Initially done
         Task unmarkedTask = taskList.markUndone(0);
         assertEquals("[T][ ] completed task", unmarkedTask.toString());
-        assertEquals("[T][ ] completed task", taskList.getAllTaskString());
+        assertEquals("1. [T][ ] completed task", taskList.getAllTaskString());
     }
 
     @Test
@@ -81,9 +81,9 @@ class TaskListTest {
         taskList.add(todo1);
         taskList.add(deadline1);
         taskList.add(event1);
-        String expected = "[T][ ] read book\n"
-                + "[D][ ] submit report (by: Aug 30 2024)\n"
-                + "[E][ ] team meeting (from: Sep 1 2024 to: Sep 1 2024)";
+        String expected = "1. [T][ ] read book\n"
+                + "2. [D][ ] submit report (by: Aug 30 2024)\n"
+                + "3. [E][ ] team meeting (from: Sep 1 2024 to: Sep 1 2024)";
         assertEquals(expected, taskList.getAllTaskString());
     }
 
