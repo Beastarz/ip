@@ -37,7 +37,7 @@ public class Deadline extends Todo {
                 deadlineTime = LocalTime.parse(d[1]);
             }
         } catch (DateTimeParseException | StringIndexOutOfBoundsException e) {
-            throw new StringConvertExceptions("Invalid deadline format: "
+            throw new StringConvertExceptions("Invalid deadline: "
                     + deadline + " Please follow this format YYYY-MM-DD HH:MM");
         }
     }
@@ -63,7 +63,7 @@ public class Deadline extends Todo {
     }
 
     public int compareDeadline(Deadline b) {
-        return deadlineDate.isAfter(b.deadlineDate) ? 1 : -1;
+        return deadlineDate.isAfter(b.deadlineDate) ? 1 : deadlineDate.isBefore(b.deadlineDate) ? -1 : 0;
     }
 
     /**

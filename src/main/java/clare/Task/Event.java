@@ -59,7 +59,7 @@ public class Event extends Deadline {
     }
 
     public int compareStartTime(Event event) {
-        return startDate.isAfter(event.startDate) ? 1 : -1;
+        return startDate.isAfter(event.startDate) ? 1 : startDate.isBefore(event.startDate) ? -1 : 0;
     }
 
     @Override
