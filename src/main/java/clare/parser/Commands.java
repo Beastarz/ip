@@ -12,7 +12,8 @@ public enum Commands {
     TODO,
     DEADLINE,
     EVENT,
-    SEARCH,
+    DUE,
     FIND,
-    SORT
+    SORT,
+    HELP
 }

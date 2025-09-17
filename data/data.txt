@@ -1,12 +1,6 @@
-T|0|aa
-E|0|gg|2025-12-12|2025-12-13 12:12
-D|0|gg|2025-12-12
-D|0|gg|2025-12-12
-T|0|h
-D|0|hh|2025-03-31
-T|1|hi
-D|1|hihi|2025-08-28 14:34:55.688743
-T|0|jjj
-T|0|jsjs
-T|1|sas
-T|1|sos
+T|0|Send a follow-up email
+T|1|Update contact list
+D|0|Review budget proposal|2025-09-25
+D|0|Submit quarterly report|2025-10-15
+E|0|System upgrade|2025-10-06|2025-10-05
+E|1|Project X kickoff meeting|2025-09-20|2025-09-20

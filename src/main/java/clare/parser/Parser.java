@@ -72,7 +72,7 @@ public class Parser {
                 msg = msg.substring(6).trim();
                 delete(msg);
                 break;
-            case SEARCH:
+            case DUE:
                 findByDeadline(msg);
                 break;
             case FIND:
@@ -80,6 +80,9 @@ public class Parser {
                 break;
             case SORT:
                 sort(msg);
+                break;
+            case HELP:
+                ui.showHelp();
                 break;
             default:
                 ui.showMessage("I don't understand this command :(");
@@ -107,7 +110,8 @@ public class Parser {
         }
 
         taskList.add(newTask);
-        ui.showMessage("I have added a todo: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("System update: New task added!\n" + newTask + "\nYou now have "
+                + taskList.size() + " tasks in the system.");
     }
 
     private void createDeadline(String msg) {
@@ -141,7 +145,8 @@ public class Parser {
         }
         assert newTask instanceof Deadline;
         taskList.add(newTask);
-        ui.showMessage("I have added a deadline: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("Deadline uploaded successfully!\n" + newTask + "\nYou now have "
+                + taskList.size() + " tasks in the system.");
     }
 
     private void createEvent(String msg) {
@@ -176,11 +181,12 @@ public class Parser {
         }
         assert newTask instanceof Event;
         taskList.add(newTask);
-        ui.showMessage("I have added an event: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("Event Initialized!\n" + newTask + "\nYou now have "
+                + taskList.size() + " tasks in the system.");
     }
 
     private void showList() {
-        ui.showMessage(taskList.getAllTaskString());
+        ui.showMessage("Current task database:\n" + taskList.getAllTaskString());
     }
 
     private void mark(String num) {
@@ -206,7 +212,7 @@ public class Parser {
             ui.showMessage("There is no such task!");
             return;
         }
-        ui.showMessage("I have marked this task done:" + " \n  " + (i + 1) + ". " + t + "\nWell Done!!");
+        ui.showMessage("Task status updated: Completed!\n" + (i + 1) + ". " + t + "\nWell Done!!");
     }
 
     private void unmark(String num) {
@@ -232,7 +238,7 @@ public class Parser {
             ui.showMessage("No such task!");
             return;
         }
-        ui.showMessage("I have marked this task undone:" + " \n  " + (i + 1) + ". " + t);
+        ui.showMessage("Task reactivated!\n" + (i + 1) + ". " + t);
     }
 
     private void delete(String num) {
@@ -255,11 +261,12 @@ public class Parser {
             ui.showMessage("Invalid format: " + e);
             return;
         }
-        ui.showMessage("I have deleted an event: " + t + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("Task removed from memory banks:\n" + t + "\nYou now have "
+                + taskList.size() + " tasks in the system.");
     }
 
     private void findByDeadline(String msg) {
-        String[] s = msg.substring(6).trim().split(" ");
+        String[] s = msg.substring(3).trim().split(" ");
         LocalDate date;
         try {
             date = LocalDate.parse(s[0]);

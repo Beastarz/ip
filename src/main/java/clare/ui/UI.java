@@ -33,4 +33,38 @@ public class UI {
     public void showMessage(String msg) {
         clareSays(msg);
     }
+
+    /**
+     * Prints out all available commands
+     */
+    @SuppressWarnings("checkstyle:Regexp")
+    public void showHelp() {
+        clareSays("""
+                Available Commands:
+
+                todo <description>: Add a simple task
+
+                deadline <description> /by YYYY-MM-DD: Add task with deadline
+
+                event <description> /from YYYY-MM-DD /to YYYY-MM-DD: Add event
+
+                list: View all tasks
+
+                mark <number>: Mark task as completed
+
+                unmark <number>: Unmark completed task
+
+                delete <number>: Remove task
+
+                find <keyword>: Search tasks
+
+                due [YYYY-MM-DD]: Show due tasks
+
+                sort [-a/-d] [title/deadline/start]: sort list according to title/deadline/start,
+                in -a ascending, -d descending
+
+                help: Show this help message
+                """
+        );
+    }
 }
