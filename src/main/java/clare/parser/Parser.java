@@ -24,6 +24,7 @@ public class Parser {
 
     /**
      * Constructor for the class Parser
+     *
      * @param ui The ui object that display the message
      * @param storage The storage object that handle data storage
      * @param taskList The list of tasks
@@ -36,6 +37,7 @@ public class Parser {
 
     /**
      * Processes command from input
+     *
      * @param msg the command string
      */
     public void processCommand(String msg) {
@@ -105,7 +107,7 @@ public class Parser {
         }
 
         taskList.add(newTask);
-        ui.showMessage("added todo: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("I have added a todo: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
 
     private void createDeadline(String msg) {
@@ -139,7 +141,7 @@ public class Parser {
         }
         assert newTask instanceof Deadline;
         taskList.add(newTask);
-        ui.showMessage("added deadline: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("I have added a deadline: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
 
     private void createEvent(String msg) {
@@ -174,7 +176,7 @@ public class Parser {
         }
         assert newTask instanceof Event;
         taskList.add(newTask);
-        ui.showMessage("added event: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("I have added an event: " + newTask + "\nNow you have " + taskList.size() + " tasks.");
     }
 
     private void showList() {
@@ -201,10 +203,10 @@ public class Parser {
             ui.showMessage("Invalid format: " + e);
             return;
         } catch (IndexOutOfBoundsException e) {
-            ui.showMessage("No such task!");
+            ui.showMessage("There is no such task!");
             return;
         }
-        ui.showMessage("I have marked this task done:" + " \n  " + (i + 1) + ". " + t);
+        ui.showMessage("I have marked this task done:" + " \n  " + (i + 1) + ". " + t + "\nWell Done!!");
     }
 
     private void unmark(String num) {
@@ -253,7 +255,7 @@ public class Parser {
             ui.showMessage("Invalid format: " + e);
             return;
         }
-        ui.showMessage("deleted event: " + t + "\nNow you have " + taskList.size() + " tasks.");
+        ui.showMessage("I have deleted an event: " + t + "\nNow you have " + taskList.size() + " tasks.");
     }
 
     private void findByDeadline(String msg) {
