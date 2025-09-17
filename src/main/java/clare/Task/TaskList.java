@@ -97,6 +97,7 @@ public class TaskList {
 
     /**
      * Gets the string of all task for storage
+     *
      * @return the string for all task in save format
      */
     public String getAllTaskSaveString() {
@@ -110,6 +111,7 @@ public class TaskList {
 
     /**
      * Gets the string of tasks searched by deadline
+     *
      * @param deadline the deadline of task
      * @return the string pf tasks within the deadline in list
      */
@@ -130,6 +132,7 @@ public class TaskList {
 
     /**
      * Gets the string of tasks by title
+     *
      * @param title the tile of task
      * @return the string of tasks with the title in list
      */
