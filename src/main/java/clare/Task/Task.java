@@ -17,9 +17,10 @@ public abstract class Task {
     }
 
     /**
-     * Method to convert data strings to duke.Task object
-     * @param data duke.data string
-     * @return duke.Task object from data string
+     * Method to convert data strings to Task object
+     *
+     * @param data data string
+     * @return Task object from data string
      * @throws StringConvertExceptions exceptions when the format of data string is wrong
      */
     public static Task convert(String data) throws StringConvertExceptions {
