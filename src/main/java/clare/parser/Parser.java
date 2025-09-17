@@ -287,9 +287,8 @@ public class Parser {
         if (msg.startsWith("-")) {
             if (msg.startsWith("-d")) {
                 isAsc = false;
-            } else if (msg.startsWith("-a")) {
-            } else {
-                ui.showMessage("I don't understand this command");
+            } else if (!msg.startsWith("-a")) {
+                ui.showMessage("Unknown flag, please follow format -- sort [-a/-d] [title/deadline/start] ");
                 return;
             }
             msg = msg.substring(2).trim();
@@ -301,7 +300,7 @@ public class Parser {
         } else if (msg.startsWith("start")) {
             ui.showMessage(taskList.sortTaskByStartDate(isAsc));
         } else {
-            ui.showMessage("Unknown command, please follow format -- sort (-a/-d) (title/deadline/start) ");
+            ui.showMessage("Command does not exist, please follow format -- sort [-a/-d] [title/deadline/start] ");
             return;
         }
         try {
