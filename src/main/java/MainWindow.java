@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -23,14 +25,16 @@ public class MainWindow extends AnchorPane {
     private Clare clare;
     private Stage stage;
 
-    private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private final Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private final Image userImage =
+            new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/User.png")));
+    private final Image clareImage =
+            new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/Clare.png")));
 
     @FXML
     private void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-        dialogContainer.getChildren().add(DialogBox.getDukeDialog(
-                "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?", dukeImage));
+        dialogContainer.getChildren().add(DialogBox.getClareDialog(
+                "Hello dear, I am Clare!\nSo happy to see you today.\nWhat can I help?", clareImage));
     }
 
     /**
@@ -59,7 +63,7 @@ public class MainWindow extends AnchorPane {
         String response = clare.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getClareDialog(response, clareImage)
         );
         userInput.clear();
     }
