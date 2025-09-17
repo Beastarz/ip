@@ -61,19 +61,3 @@
     -fx-background-color: #E8F6EF; /* Fallback for a cleaner look if images aren't round */
     -fx-background-radius: 50%;
 }
-
-/* Styling for the header container */
-#headerBox {
-    -fx-background-color: #8FD8D2;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.5, 0, 1);
-    -fx-border-color: #A0D2DB;
-    -fx-border-width: 0 0 1px 0; /* Adds a subtle bottom border */
-}
-
-/* Styling for the app name label */
-#appName {
-    -fx-text-fill: #333333;
-    -fx-font-family: "Arial", sans-serif;
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
-}
