@@ -158,5 +158,6 @@ Clare will sort your tasks by their deadlines in ascending order, so the soonest
 | `find`     | `find <keyword>`                                      | Search tasks                                                               |
 | `due`      | `due YYYY-MM-DD`                                      | Search deadline                                                            |
 | `sort`     | `sort [-a/-d] [title/deadline/start]`                 | sort list according to title/deadline/start,in -a ascending, -d descending |
+| `bye`      | `bye`                                                 | close the app                                                              |
 
 **"Running optimal protocols for your success."** - Clare 🤖✨

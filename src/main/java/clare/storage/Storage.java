@@ -60,4 +60,28 @@ public class Storage {
         fw.write(newTask.toSaveString() + System.lineSeparator());
         fw.close();
     }
+
+    /**
+     * create a file if the path is not existed
+     */
+    public void createFile() {
+        File dir = new File("data");
+        if (!dir.exists()) {
+            boolean isCreated = dir.mkdir();
+            if (!isCreated) {
+                System.out.println("Error creating directory");
+            }
+        }
+
+        File file = new File("data\\data.txt");
+
+        try {
+            boolean isCreated = file.createNewFile();
+            if (!isCreated) {
+                System.out.println("Error creating file");
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
 }

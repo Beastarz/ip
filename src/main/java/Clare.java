@@ -28,7 +28,7 @@ public class Clare {
         try {
             taskList = new TaskList(storage.loadData());
         } catch (FileNotFoundException e) {
-            ui.showMessage("File not Found: " + e);
+            storage.createFile();
             taskList = new TaskList();
         } catch (StringConvertExceptions e) {
             ui.showMessage("Error data format " + e);

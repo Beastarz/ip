@@ -64,6 +64,8 @@ public class UI {
                 in -a ascending, -d descending
 
                 help: Show this help message
+
+                bye: close the app
                 """
         );
     }
