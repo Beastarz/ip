@@ -31,7 +31,7 @@ Clare will create a deadline task with the specified date and remind you that pr
 ```
 Deadline uploaded successfully!
 [D][ ] Submit lab report (by: Dec 31, 2024)
-You now have 1 tasks in the system
+You now have 2 tasks in the system
 ```
 
 ## Adding events
@@ -46,7 +46,7 @@ Clare will create an event with your specified date range and log it neatly into
 ```
 Event initialized!
 [E][ ] Robotics Expo (from: Jun 6, 2024 to: Jun 8, 2024)
-You now have 1 tasks in the system
+You now have 3 tasks in the system
 ```
 
 ## Viewing your task list
@@ -86,7 +86,6 @@ Clare will unmark the task and put it back in your active list.
 ```
 Task reactivated!
 [T][ ] Charge batteries
-Let's finish this together!
 ```
 ## Deleting tasks
 
@@ -98,7 +97,7 @@ Clare will remove the specified task and update your task count.
 ```
 Task removed from memory banks:
 [D][ ] Submit lab report (by: Dec 31, 2024)
-Remaining active tasks: 2
+You now have 3 tasks in the system
 ```
 
 ## Finding tasks
@@ -157,7 +156,7 @@ Clare will sort your tasks by their deadlines in ascending order, so the soonest
 | `delete`   | `delete <task_number>`                                | Remove task                                                                |
 | `find`     | `find <keyword>`                                      | Search tasks                                                               |
 | `due`      | `due YYYY-MM-DD`                                      | Search deadline                                                            |
-| `sort`     | `sort [-a/-d] [title/deadline/start]`                 | sort list according to title/deadline/start,in -a ascending, -d descending |
-| `bye`      | `bye`                                                 | close the app                                                              |
+| `sort`     | `sort [-a/-d] [title/deadline/start]`                 | Sort list according to title/deadline/start,in -a ascending, -d descending |
+| `bye`      | `bye`                                                 | Close the app                                                              |
 
 **"Running optimal protocols for your success."** - Clare 🤖✨
